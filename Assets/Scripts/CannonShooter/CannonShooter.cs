@@ -28,6 +28,9 @@ public class CannonShooter : MonoBehaviour
     public float invincibilityDuration = 2f;
     public float blinkInterval = 0.1f;
 
+    [Header("대포 소리")]
+    public AudioClip shotSound;
+
     private bool isInvincible = false;
     private bool canShoot = true;
     private float lastShootTime = 0f;
@@ -104,6 +107,8 @@ public class CannonShooter : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canShoot && isGrounded)
         {
+            // 대포 소리 재생
+            SoundManager.Instance.PlaySFX(shotSound);
             ShootCannon();
         }
     }
