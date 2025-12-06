@@ -21,5 +21,6 @@ public class GameOverUIAutoLoader : MonoBehaviour
 
         GameObject ui = Instantiate(GameOverUI);
         DontDestroyOnLoad(ui);
+
     }
 }

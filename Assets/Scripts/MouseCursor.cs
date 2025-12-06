@@ -3,24 +3,36 @@ using UnityEngine;
 public class MouseCursor : MonoBehaviour
 {
     public Texture2D cursorTexture;
+    private static bool isInitialized = false;
 
-    void Start()
+    void Awake()
     {
-        // 1. 커서 표시
-        Cursor.visible = true;
+        if (!isInitialized)
+        {
+            DontDestroyOnLoad(gameObject);   // 씬 이동해도 유지
 
-        // 2. 커서 고정 해제
+            ApplyCursor();                   // 첫 실행에서만 커서 적용
+            isInitialized = true;
+        }
+        else
+        {
+            Destroy(gameObject);             // 중복 생성 방지
+        }
+    }
+
+    void ApplyCursor()
+    {
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        // 3. 커서 아이콘 변경
         if (cursorTexture != null)
         {
-            Vector2 hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2); // 중앙 클릭 지점
+            Vector2 hotSpot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
             Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.Auto);
         }
         else
         {
-            Debug.LogWarning("Cursor Texture is missing!");
+            Debug.LogWarning("Cursor texture not assigned!");
         }
     }
 }
