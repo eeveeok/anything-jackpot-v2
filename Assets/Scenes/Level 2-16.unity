@@ -17609,6 +17609,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5567554072073979545, guid: 4895aaabb8eba31478564cfe65131bfe, type: 3}
+      propertyPath: checkpoint
+      value: 
+      objectReference: {fileID: 760586113}
     - target: {fileID: 5567554072073979546, guid: 4895aaabb8eba31478564cfe65131bfe, type: 3}
       propertyPath: m_Name
       value: LaserShooter
