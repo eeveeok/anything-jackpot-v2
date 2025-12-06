@@ -27,7 +27,7 @@ public class Stage1Boss : MonoBehaviour
 
     [Header("추적 AI")]
     public float followSpeed = 8f;
-    public float followStopDistance = 3f;   // 플레이어와 거리 유지
+    public float followStopDistance = 4f;   // 플레이어와 거리 유지
 
     [Header("패턴 설정")]
     public float idleDelay = 2f;
@@ -160,7 +160,7 @@ public class Stage1Boss : MonoBehaviour
 
     void FollowPlayer()
     {
-        if (player == null || player.GetComponent<LaserShooter>().isDead) return;
+        if (player == null || player.GetComponent<LaserShooter>().IsDead) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -445,7 +445,7 @@ public class Stage1Boss : MonoBehaviour
     {
         LaserShooter laserShooter = player.GetComponent<LaserShooter>();
 
-        if (laserShooter == null || laserShooter.isDead || laserShooter.IsInvincible) return;
+        if (laserShooter == null || laserShooter.IsDead || laserShooter.IsInvincible) return;
 
         // 플레이어가 땅에 닿아있는지 확인
         if (laserShooter.IsGrounded)
@@ -861,7 +861,7 @@ public class Stage1Boss : MonoBehaviour
         Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
         LaserShooter playerScript = player.GetComponent<LaserShooter>();
 
-        if (playerRb == null || playerScript == null || playerScript.isDead) return;
+        if (playerRb == null || playerScript == null || playerScript.IsDead) return;
 
         // 플레이어가 targetX보다 오른쪽에 있으면 왼쪽으로 밀기
         if (player.position.x > targetX)
@@ -885,7 +885,7 @@ public class Stage1Boss : MonoBehaviour
         Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
         LaserShooter playerScript = player.GetComponent<LaserShooter>();
 
-        if (playerRb == null || playerScript == null || playerScript.isDead) return;
+        if (playerRb == null || playerScript == null || playerScript.IsDead) return;
 
         // 현재 플레이어가 목표보다 오른쪽에 있는지 확인
         if (player.position.x > targetX)
@@ -1529,9 +1529,6 @@ public class Stage1Boss : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         isInPattern = true;
-
-        //anim.SetTrigger("die");
-        Debug.Log("스테이지 1 보스 사망!");
 
         // 포탈 활성화
         if (portal != null)

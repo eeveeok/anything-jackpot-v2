@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a100b4c25d3827409d5f29a024aad37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   jumpForce: 10
   cannonEffectPrefab: {fileID: 2559277340021799047, guid: a41b05d67a8b91d40b89e1c61656b5b8, type: 3}
   recoilForce: 30
@@ -174,6 +174,7 @@ MonoBehaviour:
   isDead: 0
   invincibilityDuration: 2
   blinkInterval: 0.1
+  shotSound: {fileID: 8300000, guid: 524e35791ba5cf9458d88f3d466705d9, type: 3}
   airMaterial: {fileID: 6200000, guid: eb69a5c0c6f92f349be5f5bb8b06c274, type: 2}
   groundCheck: {fileID: 5567554073421109413}
   groundCheckRadius: 0.2

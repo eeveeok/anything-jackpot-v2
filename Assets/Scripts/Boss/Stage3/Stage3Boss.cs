@@ -201,7 +201,7 @@ public class Stage3Boss : MonoBehaviour
     // ----------------------------------------------------------
     void FollowPlayer()
     {
-        if (player == null || (player.GetComponent<LaserShooter>() != null && player.GetComponent<LaserShooter>().isDead)) return;
+        if (player == null || (player.GetComponent<LaserShooter>() != null && player.GetComponent<LaserShooter>().IsDead)) return;
 
         float distance = Vector2.Distance(transform.position, player.position);
 
@@ -840,7 +840,7 @@ public class Stage3Boss : MonoBehaviour
         if (distance <= rushDamageRadius)
         {
             LaserShooter playerScript = player.GetComponent<LaserShooter>();
-            if (playerScript != null && !playerScript.isDead)
+            if (playerScript != null && !playerScript.IsDead)
             {
                 Debug.Log($"돌진 충돌! 플레이어에게 데미지 - 거리: {distance}");
                 playerScript.PlayerDie();
