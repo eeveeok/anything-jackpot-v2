@@ -116,7 +116,7 @@ public class Stage1Boss : MonoBehaviour
     void Update()
     {
         //걷는 소리 업데이트
-       // UpdateWalkSound();
+        UpdateWalkSound();
 
         if (!isInPattern)
         {
