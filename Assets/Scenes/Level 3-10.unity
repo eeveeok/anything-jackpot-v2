@@ -410,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.591329, y: 20.519999, z: -10}
+  m_LocalPosition: {x: 2.303111, y: 20.519999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -736,7 +736,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 32.97, y: 18.87, z: 0}
-  m_TranslationOffset: {x: 26.569054, y: 4.0247526, z: 7.1428566}
+  m_TranslationOffset: {x: 31.774921, y: 4.0247526, z: 7.1428566}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -18540,7 +18540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3259409526948382556, guid: cf8f1ea1c38bcec408f67e0b857319e8, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3259409526948382556, guid: cf8f1ea1c38bcec408f67e0b857319e8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18783,7 +18783,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 0, y: 18.87, z: 0}
-  m_TranslationOffset: {x: -6.4009485, y: 4.0247526, z: 7.1428566}
+  m_TranslationOffset: {x: -1.1950793, y: 4.0247526, z: 7.1428566}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -25288,7 +25288,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 378397562522100397, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: -6.4009485
+      value: -1.1950793
       objectReference: {fileID: 0}
     - target: {fileID: 378397562522100397, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -25304,7 +25304,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 378397563087847482, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 26.569054
+      value: 31.774921
       objectReference: {fileID: 0}
     - target: {fileID: 378397563087847482, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -25453,6 +25453,10 @@ PrefabInstance:
       propertyPath: virtualCamera
       value: 
       objectReference: {fileID: 1280629941}
+    - target: {fileID: 490575411347383888, guid: 4303180cee89f584cac02ece896eaf89, type: 3}
+      propertyPath: shakeIntensity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 490575411347383888, guid: 4303180cee89f584cac02ece896eaf89, type: 3}
       propertyPath: bossCameraConfiner
       value: 

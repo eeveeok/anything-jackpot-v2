@@ -158,14 +158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be3c96d6ec568c4aa7caf68f179d4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
-  range: 3
-  width: 1
   duration: 0.38
-  damageLayers:
+  tileBreakRadius: 3
+  breakableLayers:
     serializedVersion: 2
-    m_Bits: 768
-  origin: {fileID: 0}
-  tileBreakRadius: 2.5
-  raycastDistance: 5
-  debugVisualization: 1
+    m_Bits: 256

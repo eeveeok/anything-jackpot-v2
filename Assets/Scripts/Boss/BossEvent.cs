@@ -28,8 +28,14 @@ public class BossEvent : MonoBehaviour
     public GameObject bossInvisibleWalls;
     public GameObject bossObject; // 보스 오브젝트
 
+    [Header("보스 위치 설정")]
+    public Transform bossSpawnPoint; // 보스 스폰 위치 (옵션)
+    public bool autoAdjustToGround = true; // 자동으로 지면에 붙이기
+    public float groundCheckDistance = 5f; // 지면 검사 거리
+    public LayerMask groundLayer; // 지면 레이어
+
     [Header("시간 효과")]
-    public float timeSlowFactor = 0.3f; // 시간 느려짐 정도
+    public float timeSlowFactor = 0.3f;
     public float timeSlowDuration = 1.0f;
 
     [Header("이벤트 설정")]
@@ -40,6 +46,11 @@ public class BossEvent : MonoBehaviour
     private float originalOrthoSize;
     private bool isEventActive = false;
 
+    // 보스 원래 위치 저장
+    private Vector3 bossOriginalPosition;
+    private Vector3 bossOriginalScale;
+    private Collider2D bossCollider;
+
     void Start()
     {
         // 컴포넌트 초기화
@@ -48,6 +59,26 @@ public class BossEvent : MonoBehaviour
             originalOrthoSize = virtualCamera.m_Lens.OrthographicSize;
             confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
             noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        }
+
+        // 보스 오브젝트 초기화
+        if (bossObject != null)
+        {
+            // 보스의 원래 위치와 스케일 저장
+            bossOriginalPosition = bossObject.transform.position;
+            bossOriginalScale = bossObject.transform.localScale;
+
+            // 보스의 Collider 찾기
+            bossCollider = bossObject.GetComponent<Collider2D>();
+
+            // 보스 비활성화
+            bossObject.SetActive(false);
+        }
+
+        // 지면 레이어가 설정되지 않았으면 자동 설정
+        if (groundLayer.value == 0)
+        {
+            groundLayer = LayerMask.GetMask("Ground", "Default");
         }
     }
 
@@ -67,13 +98,9 @@ public class BossEvent : MonoBehaviour
         // 1. 플레이어 이동 및 컨트롤 중지
         if (player != null)
         {
-            // 플레이어 컨트롤 잠시 중지
             player.enabled = false;
-
-            // 플레이어 위치 이동
             player.transform.position = checkPoint.position;
 
-            // 플레이어 물리 정지
             Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
@@ -85,14 +112,12 @@ public class BossEvent : MonoBehaviour
         // 2. 카메라 설정 초기화
         if (virtualCamera != null)
         {
-            // 바운딩 설정
             CinemachineConfiner2D confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
             if (confiner != null && bossCameraConfiner != null)
             {
                 confiner.m_BoundingShape2D = bossCameraConfiner;
             }
 
-            // 보스월 활성화
             if (bossInvisibleWalls != null)
             {
                 bossInvisibleWalls.SetActive(true);
@@ -105,7 +130,13 @@ public class BossEvent : MonoBehaviour
         // 4. 카메라 줌 아웃 + 흔들림 효과
         yield return StartCoroutine(ZoomAndShakeEffect());
 
-        // 5. 플레이어 컨트롤 복구
+        // 5. 보스 등장 애니메이션 (플레이어 컨트롤 복구 전에)
+        if (bossObject != null)
+        {
+            yield return StartCoroutine(BossAppearanceAnimation());
+        }
+
+        // 6. 플레이어 컨트롤 복구
         if (player != null)
         {
             Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
@@ -116,15 +147,9 @@ public class BossEvent : MonoBehaviour
             player.enabled = true;
         }
 
-        // 6. 보스 등장 애니메이션
-        if (bossObject != null)
-        {
-            yield return StartCoroutine(BossAppearanceAnimation());
-        }
-
         isEventActive = false;
 
-        // 7. 트리거 콜라이더 비활성화 (한 번만 실행)
+        // 7. 트리거 콜라이더 비활성화
         GetComponent<Collider2D>().enabled = false;
     }
 
@@ -134,7 +159,6 @@ public class BossEvent : MonoBehaviour
         float originalTimeScale = Time.timeScale;
         float elapsed = 0f;
 
-        // 시간 점점 느려지기
         while (elapsed < timeSlowDuration / 2)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -144,12 +168,10 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
 
-        // 일정 시간 유지
         Time.timeScale = timeSlowFactor;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         yield return new WaitForSecondsRealtime(0.5f);
 
-        // 시간 점점 복구
         elapsed = 0f;
         while (elapsed < timeSlowDuration / 2)
         {
@@ -170,24 +192,20 @@ public class BossEvent : MonoBehaviour
         float elapsed = 0f;
         float currentSize = virtualCamera.m_Lens.OrthographicSize;
 
-        // 카메라 흔들림 활성화
         if (noise != null)
         {
             noise.m_AmplitudeGain = shakeIntensity;
             noise.m_FrequencyGain = shakeFrequency;
         }
 
-        // 줌 아웃 효과
         while (elapsed < zoomDuration)
         {
             elapsed += Time.unscaledDeltaTime;
             float t = elapsed / zoomDuration;
             float curveValue = zoomCurve.Evaluate(t);
 
-            // 부드러운 줌 아웃
             virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(currentSize, targetOrthoSize, curveValue);
 
-            // 흔들림 강도 감소
             if (noise != null)
             {
                 float shakeT = Mathf.Clamp01(elapsed / shakeDuration);
@@ -199,9 +217,13 @@ public class BossEvent : MonoBehaviour
         }
 
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
-        confiner.m_MaxWindowSize = 0f;
 
-        // 흔들림 비활성화
+        // Oversize Window 설정
+        if (confiner != null)
+        {
+            confiner.m_MaxWindowSize = 0f; // 보스룸에서는 넓게
+        }
+
         if (noise != null)
         {
             noise.m_AmplitudeGain = 0f;
@@ -209,12 +231,26 @@ public class BossEvent : MonoBehaviour
         }
     }
 
-    // 보스 등장 애니메이션
+    // 보스 등장 애니메이션 (수정됨)
     private IEnumerator BossAppearanceAnimation()
     {
-        // 보스 초기화 (비활성화 상태에서 시작)
-        bool wasActive = bossObject.activeSelf;
-        bossObject.SetActive(false);
+        // 보스 초기 위치 설정
+        Vector3 spawnPosition = bossOriginalPosition;
+
+        // 스폰 포인트가 지정되었으면 사용
+        if (bossSpawnPoint != null)
+        {
+            spawnPosition = bossSpawnPoint.position;
+        }
+
+        // 보스 위치 설정
+        bossObject.transform.position = spawnPosition;
+
+        // 자동으로 지면에 붙이기
+        if (autoAdjustToGround && bossCollider != null)
+        {
+            AdjustBossToGround();
+        }
 
         // 잠시 대기
         yield return new WaitForSecondsRealtime(0.5f);
@@ -222,8 +258,7 @@ public class BossEvent : MonoBehaviour
         // 보스 활성화
         bossObject.SetActive(true);
 
-        // 스케일 애니메이션 (커지면서 등장)
-        Vector3 originalScale = bossObject.transform.localScale;
+        // 스케일 애니메이션
         bossObject.transform.localScale = Vector3.zero;
 
         float duration = 1f;
@@ -236,23 +271,68 @@ public class BossEvent : MonoBehaviour
 
             // 탄성 효과
             float scaleValue = ElasticOut(t);
-            bossObject.transform.localScale = originalScale * scaleValue;
+            bossObject.transform.localScale = bossOriginalScale * scaleValue;
 
             yield return null;
         }
 
-        bossObject.transform.localScale = originalScale;
+        bossObject.transform.localScale = bossOriginalScale;
+
+        // 최종 위치 조정 (스케일 변경 후 다시)
+        if (autoAdjustToGround && bossCollider != null)
+        {
+            AdjustBossToGround();
+        }
     }
 
-    // 탄성 효과 함수
+    // 보스를 지면에 붙이는 함수
+    private void AdjustBossToGround()
+    {
+        if (bossCollider == null) return;
+
+        // Collider의 바닥 위치 계산
+        Bounds bounds = bossCollider.bounds;
+        Vector2 bottomCenter = new Vector2(bounds.center.x, bounds.min.y);
+
+        // 아래 방향으로 Raycast
+        RaycastHit2D hit = Physics2D.Raycast(
+            bottomCenter,
+            Vector2.down,
+            groundCheckDistance,
+            groundLayer
+        );
+
+        // Raycast 시각화 (디버그용)
+        Debug.DrawRay(bottomCenter, Vector2.down * groundCheckDistance, Color.red, 2f);
+
+        if (hit.collider != null)
+        {
+            // 지면까지의 거리 계산
+            float distanceToGround = hit.distance;
+
+            // 보스 위치 조정
+            bossObject.transform.position -= new Vector3(0, distanceToGround, 0);
+        }
+    }
+
+    // 간단한 이징 함수
     private float ElasticOut(float t)
     {
         float p = 0.3f;
         return Mathf.Pow(2, -10 * t) * Mathf.Sin((t - p / 4) * (2 * Mathf.PI) / p) + 1;
     }
+
+    // 보스 위치 재조정 함수 (디버그용)
+    public void DebugAdjustBossPosition()
+    {
+        if (bossObject != null && bossCollider != null)
+        {
+            AdjustBossToGround();
+        }
+    }
+
     void OnDestroy()
     {
-        // 씬 전환 시 시간 복구
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
     }

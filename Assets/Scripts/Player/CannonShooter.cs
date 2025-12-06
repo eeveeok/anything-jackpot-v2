@@ -8,7 +8,7 @@ public class CannonShooter : BasePlayerController
     public float recoilForce = 30f;
     public float recoilDuration = 1f;
     public float maxRecoilVelocity = 50f;
-    public float shootCooldown = 0.5f;
+    public float shootCooldown = 1f;
     public float verticalRecoilMultiplier = 0.6f;
     public float effectSpawnDistance = 0.5f;
     public float effectDuration = 0.5f;
@@ -16,7 +16,6 @@ public class CannonShooter : BasePlayerController
     // 발사 관련
     private bool canShoot = true;
     private float lastShootTime = 0f;
-    private bool isRecoiling = false;
 
     // 애니메이터 파라미터
     private const string IS_SHOOTING_PARAM = "IsShooting";
@@ -32,7 +31,7 @@ public class CannonShooter : BasePlayerController
     {
         if (IsGamePaused()) return;
 
-        if (Input.GetMouseButtonDown(0) && canShoot && isGrounded)
+        if (Input.GetMouseButtonDown(0) && canShoot)
         {
             ShootCannon();
         }
@@ -41,9 +40,9 @@ public class CannonShooter : BasePlayerController
     // 이동 처리 (반동 중 x축 속도 보존)
     protected override void Move()
     {
-        isRecoiling = Time.time - lastShootTime < recoilDuration * 0.5f;
+        bool isRecoiling = Time.time - lastShootTime < recoilDuration * 0.5f;
 
-        if (!isRecoiling || !isGrounded)
+        if (!isRecoiling && isGrounded)
         {
             rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         }
