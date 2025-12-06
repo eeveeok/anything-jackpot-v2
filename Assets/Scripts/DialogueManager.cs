@@ -26,11 +26,12 @@ public class DialogueManager : MonoBehaviour
     private DialogueData currentDialogue;
     private int currentIndex = 0;
     private bool isTyping = false;
-    private bool isDialogueActive = false;
 
-    void Start()
-    {        
+    [HideInInspector]
+    public bool isDialogueActive = false;
 
+    public void ActiveDialog()
+    {
         dialoguePanel.SetActive(false);
         nextIndicator.SetActive(false);
         portraitImage.SetActive(false);   // 처음에 초상화 OFF

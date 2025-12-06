@@ -60,8 +60,9 @@ public class LaserShooter : MonoBehaviour
     // 반동 관련
     private Vector2 recoilVelocity;
 
-    // 렌더러 참조
+    // 참조
     private SpriteRenderer spriteRenderer;
+    private DialogueManager dialogueManager;
 
     void Start()
     {
@@ -69,6 +70,7 @@ public class LaserShooter : MonoBehaviour
         mainCamera = Camera.main;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
 
         if (rb == null)
         {
@@ -78,6 +80,11 @@ public class LaserShooter : MonoBehaviour
         if (spriteRenderer == null)
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        if (dialogueManager != null)
+        {
+            dialogueManager.ActiveDialog();
         }
 
         Collider2D col = GetComponent<Collider2D>();
@@ -117,6 +124,8 @@ public class LaserShooter : MonoBehaviour
 
     void HandleInput()
     {
+        if (dialogueManager.isDialogueActive) return;
+
         if (isDead)
         {
             horizontalInput = 0f;

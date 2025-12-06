@@ -48,7 +48,9 @@ public class CannonShooter : MonoBehaviour
     private Animator animator;
     private readonly int isShootingHash = Animator.StringToHash("IsShooting");
 
+    // 참조
     private SpriteRenderer spriteRenderer;
+    private DialogueManager dialogueManager;
 
     void Start()
     {
@@ -56,6 +58,12 @@ public class CannonShooter : MonoBehaviour
         mainCamera = Camera.main;
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dialogueManager = FindObjectOfType<DialogueManager>();
+
+        if (dialogueManager != null)
+        {
+            dialogueManager.ActiveDialog();
+        }
 
         Collider2D col = GetComponent<Collider2D>();
         if (col != null && airMaterial != null)
