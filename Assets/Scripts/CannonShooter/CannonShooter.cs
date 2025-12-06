@@ -108,7 +108,7 @@ public class CannonShooter : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && canShoot && isGrounded)
         {
             // 대포 소리 재생
-            SoundManager.Instance.PlaySFX(shotSound);
+            SoundManager.Instance.PlaySFX(shotSound, 0.3f);
             ShootCannon();
         }
     }
