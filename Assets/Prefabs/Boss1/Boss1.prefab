@@ -199,3 +199,14 @@ MonoBehaviour:
   explosionCount: 10
   explosionRadius: 3
   explosionInterval: 0.1
+  roarSound1: {fileID: 8300000, guid: 388c9585b4169d5478f0f6b1532c81af, type: 3}
+  roarSound2: {fileID: 8300000, guid: 14826712d3b49c14cbc990cb3a44dd51, type: 3}
+  walkSound: {fileID: 8300000, guid: 38d3e8365225cdc4cb854a5bbfdc9ef9, type: 3}
+  featherShotSound: {fileID: 8300000, guid: 2001fba045c854347bd8af60f61ca745, type: 3}
+  meteorSound: {fileID: 8300000, guid: 0ede0f6dc3292d34293f470f88f5707b, type: 3}
+  slamSound: {fileID: 8300000, guid: 649e1e5c41a20144781b8ba0d8a6ff6a, type: 3}
+  rageSound: {fileID: 8300000, guid: ccf5a1e1d0e9a48449a8fabfe58302b9, type: 3}
+  deathSound: {fileID: 8300000, guid: 58017258e2eb4ce45b0114ee3a1b2f6a, type: 3}
+  damageSound1: {fileID: 8300000, guid: fae6281ffe340074c9467494fbad87ba, type: 3}
+  damageSound2: {fileID: 8300000, guid: f84e2ff8a3e52494585fd2ce35650303, type: 3}
+  damageSound3: {fileID: 8300000, guid: a3e35bafc1138c2479d4909666181e1a, type: 3}
