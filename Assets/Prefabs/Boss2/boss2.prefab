@@ -405,7 +405,7 @@ MonoBehaviour:
   rushPathWidth: 5
   groundLevel: 2.3
   laserSpeed: 30
-  laserCount: 5
+  laserCount: 8
   laserInterval: 0.3
   laserWarmingTime: 0.8
   laserDuration: 2
@@ -425,3 +425,15 @@ MonoBehaviour:
   explosionCount: 10
   explosionRadius: 3
   explosionInterval: 0.1
+  roarSound1: {fileID: 8300000, guid: 4dc2b5a47f9bdf946894f3c1c7c66704, type: 3}
+  roarSound2: {fileID: 8300000, guid: 83f8aa121f712714e80f8a7b4ef44513, type: 3}
+  walkSound: {fileID: 8300000, guid: 029bdcb9031c1594ab4dd99be806ced9, type: 3}
+  rageSound: {fileID: 8300000, guid: e1a9b7e78a467ff4cbd680373ee78791, type: 3}
+  deathSound: {fileID: 8300000, guid: 28bd5f66950debf468a7aa8fcd98b849, type: 3}
+  damageSound1: {fileID: 8300000, guid: e03c11b2a8581a54c9eb5331060ffcb2, type: 3}
+  damageSound2: {fileID: 8300000, guid: 1fdf551665ec385449407e6bbe033b88, type: 3}
+  damageSound3: {fileID: 8300000, guid: 557fa0902c504484e86182c4257c94e9, type: 3}
+  slamSound: {fileID: 8300000, guid: b4b0fa083b0c75945b5b76c765c7c8c0, type: 3}
+  rushSound1: {fileID: 8300000, guid: 1e6167a29d2af1645be6d1763253679a, type: 3}
+  rushSound2: {fileID: 8300000, guid: b52539a9f213e6e4a9c71a7e3ef468fb, type: 3}
+  rushSound3: {fileID: 8300000, guid: d1328b48b3660224bbcd90cbda648bec, type: 3}

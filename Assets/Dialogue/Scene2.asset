@@ -13,8 +13,6 @@ MonoBehaviour:
   m_Name: Scene2
   m_EditorClassIdentifier: 
   lines:
-  - speaker: player
-    text: "\uC52C2"
   - speaker: Nemo
     text: "\uBAA8\uB4E0 \uCC28\uC6D0\uC758 \uC2E0\uD638\uAC00 \uB2F9\uC2E0\uC744
       \uAC00\uB9AC\uD0A4\uACE0 \uC788\uC5B4\uC694. \uC544\uB9C8 \uB2F9\uC2E0\uC774

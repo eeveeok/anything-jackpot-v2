@@ -15,7 +15,7 @@ public class UIAutoLoader : MonoBehaviour
             return;
 
        
-        if (FindObjectOfType<GameOverManager>() != null)
+        if (FindObjectOfType<DialogueManager>() != null)
             return;
 
         

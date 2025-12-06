@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmClip: {fileID: 8300000, guid: 2f1948d7526680240a7b2645dd9e6c89, type: 3}
-  volume: 0.5
+  volume: 0.2
