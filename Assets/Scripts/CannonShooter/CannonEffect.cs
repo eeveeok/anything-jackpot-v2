@@ -70,7 +70,6 @@ public class CannonEffect : MonoBehaviour
         if (hit.collider != null)
         {
             impactPoint = hit.point;
-            Debug.Log($"CannonEffect hit: {hit.collider.name} at {impactPoint}");
 
             // 2. 충돌한 객체가 Breakable 태그를 가지고 있는지 확인
             if (hit.collider.CompareTag("Breakable"))
@@ -89,7 +88,6 @@ public class CannonEffect : MonoBehaviour
                 else
                 {
                     // 타일맵이 아닌 일반 Breakable 오브젝트 파괴
-                    Debug.Log($"Destroying breakable object: {hit.collider.name}");
                     Destroy(hit.collider.gameObject);
                 }
             }
@@ -144,11 +142,6 @@ public class CannonEffect : MonoBehaviour
                         {
                             tilemap.SetTile(cell, null);
                             healthDict.Remove(cell);
-                            Debug.Log($"CannonEffect: Tile destroyed at cell: {cell}");
-                        }
-                        else
-                        {
-                            Debug.Log($"CannonEffect: Tile damaged at cell: {cell}, health: {healthDict[cell]}");
                         }
                     }
                 }

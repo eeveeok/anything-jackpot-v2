@@ -249,8 +249,6 @@ public class LaserBeam : MonoBehaviour
             Tilemap tilemap = hitObject.GetComponent<Tilemap>();
             if (tilemap != null)
             {
-                Debug.Log("타일");
-
                 Vector3 hitPos = hit.point - hit.normal * 0.01f; // 경계면 보정
                 Vector3Int cell = tilemap.WorldToCell(hitPos);
 
