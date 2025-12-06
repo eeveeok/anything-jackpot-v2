@@ -378,7 +378,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.2296143, y: 0.65390635, z: -10}
+  m_LocalPosition: {x: 6.3279343, y: 0.65390635, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13942,6 +13942,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1389215313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1389215315}
+  - component: {fileID: 1389215316}
+  m_Layer: 0
+  m_Name: GameOverUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1389215315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389215313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 408.19998, y: 217.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1389215316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389215313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 025ab348535c8d04c8494a7b5b29c324, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverUI: {fileID: 8140560509162808367, guid: 6ca91405101cfd0479e66283862a6995, type: 3}
 --- !u!1001 &1707835655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13951,7 +13996,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 90919380, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 13.1750965
+      value: 12.4005165
       objectReference: {fileID: 0}
     - target: {fileID: 90919380, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -13967,7 +14012,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 1007010713, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 13.1750965
+      value: 12.4005165
       objectReference: {fileID: 0}
     - target: {fileID: 1007010713, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -13983,7 +14028,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 1229315920, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 13.1750965
+      value: 12.4005165
       objectReference: {fileID: 0}
     - target: {fileID: 1229315920, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -13999,7 +14044,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 1539910820, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 13.1750965
+      value: 12.4005165
       objectReference: {fileID: 0}
     - target: {fileID: 1539910820, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14015,7 +14060,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 1655917927, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 13.1750965
+      value: 12.4005165
       objectReference: {fileID: 0}
     - target: {fileID: 1655917927, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14079,7 +14124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668880, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 1.8890964
+      value: 1.1145164
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668880, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14095,7 +14140,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 2883658640239668881, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 1.8890964
+      value: 1.1145164
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668881, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14111,7 +14156,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 2883658640239668882, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 1.8890964
+      value: 1.1145164
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668882, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14127,7 +14172,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 2883658640239668883, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 1.8890964
+      value: 1.1145164
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668883, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -14143,7 +14188,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 2883658640239668884, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 1.8890964
+      value: 1.1145164
       objectReference: {fileID: 0}
     - target: {fileID: 2883658640239668884, guid: 17acbeaf887cdf646872e49f87a6934d, type: 3}
       propertyPath: m_TranslationOffset.y

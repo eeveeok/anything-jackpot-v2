@@ -5,6 +5,8 @@ using System.Collections;
 
 public class GameOverManager : MonoBehaviour
 {
+    public static bool isGameOver = false;
+
     public GameObject gameOverPanel;
 
     public Text gameOverText;
@@ -35,6 +37,7 @@ public class GameOverManager : MonoBehaviour
 
     public void TriggerGameOver()
     {
+        isGameOver = true;
         Time.timeScale = 0f;
         StartCoroutine(GameOverSequence());
     }
@@ -58,12 +61,33 @@ public class GameOverManager : MonoBehaviour
     public void OnClickYes()
     {
         Time.timeScale = 1f;
+
+        LaserShooter player = FindObjectOfType<LaserShooter>();
+        if (player != null)
+            player.enabled = true;
+
+        // UI ¼û±â±â
+        gameOverPanel.SetActive(false);
+        yesButtonObj.SetActive(false);
+        noButtonObj.SetActive(false);
+        navigationObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
+        continueText.gameObject.SetActive(false); ;
+
+        GameOverManager.isGameOver = false;
+
+        // ÇöÀç ¾À ´Ù½Ã ·Îµå
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void OnClickNo()
     {
         Time.timeScale = 1f;
+
+        LaserShooter player = FindObjectOfType<LaserShooter>();
+        if (player != null)
+            player.enabled = true;
+
         SceneManager.LoadScene("Title");
     }
 }

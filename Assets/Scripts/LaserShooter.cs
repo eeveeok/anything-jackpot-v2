@@ -123,6 +123,8 @@ public class LaserShooter : MonoBehaviour
 
     void HandleInput()
     {
+        if (GameOverManager.isGameOver) return;   ///////////////////////////
+
         if (dialogueManager.isDialogueActive || pauseManager.isPaused) return;
 
         if (isDead)
