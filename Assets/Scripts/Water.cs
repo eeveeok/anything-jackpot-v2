@@ -7,6 +7,10 @@ public class Water : MonoBehaviour
     [Header("물리 설정")]
     public float gravityMultiplier = 0.4f;
     public float waterDrag = 3.5f;
+    [Header("물 소리")]
+    public AudioClip inSound;
+    public AudioClip outSound;
+
 
     // 플레이어의 원래 중력을 저장할 변수
     private float savedGravity;
@@ -15,6 +19,7 @@ public class Water : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySFX(inSound, 1.0f);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -47,8 +52,10 @@ public class Water : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+
         if (collision.CompareTag("Player"))
         {
+            SoundManager.Instance.PlaySFX(outSound, 1.0f);
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
             if (rb != null)
             {

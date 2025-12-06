@@ -13,6 +13,8 @@ public class PortalWithFade : MonoBehaviour
     public CanvasGroup fadeCanvas;                // 페이드용 CanvasGroup
     public Transform portalCenter;                // 포탈 중심 (Portal 오브젝트)
 
+    public AudioClip portalSound;              // 포탈 사운드 효과
+
     private bool isProcessing = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -25,6 +27,10 @@ public class PortalWithFade : MonoBehaviour
 
     private IEnumerator FadeTeleport(Collider2D player)
     {
+        // 사운드 재생
+
+        SoundManager.Instance.PlaySFX(portalSound, 3.0f);
+
         isProcessing = true;
 
         // 1) 플레이어 이동 스크립트 비활성화 삭제

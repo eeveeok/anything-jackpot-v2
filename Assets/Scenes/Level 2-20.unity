@@ -2827,6 +2827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityMultiplier: 0.4
   waterDrag: 3.5
+  inSound: {fileID: 8300000, guid: 2e0d60c021dae1d4da188fdcfe6ed291, type: 3}
+  outSound: {fileID: 8300000, guid: 8121bf2a68ccddd45bebb20b041607ea, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
