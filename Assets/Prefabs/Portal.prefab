@@ -190,13 +190,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f122af788ad74b5428d4c7e983cfc85a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 7, y: -2, z: 0}
+  sceneToLoad: 
   fadeDuration: 3
   suctionSpeed: 5
   rotateSpeed: 360
-  playerMovementScript: {fileID: 5567554072073979545, guid: 4895aaabb8eba31478564cfe65131bfe, type: 3}
   fadeCanvas: {fileID: 3656607147991213560}
   portalCenter: {fileID: 2903017373234969277}
+  portalSound: {fileID: 8300000, guid: 754910e5582833e438fe70904653a0a8, type: 3}
 --- !u!95 &5317216078562705252
 Animator:
   serializedVersion: 5

@@ -25828,9 +25828,57 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 367199987}
     - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: rageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e1a9b7e78a467ff4cbd680373ee78791, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: slamSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b4b0fa083b0c75945b5b76c765c7c8c0, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: walkSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 029bdcb9031c1594ab4dd99be806ced9, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 28bd5f66950debf468a7aa8fcd98b849, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
       propertyPath: laserCount
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: roarSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 4dc2b5a47f9bdf946894f3c1c7c66704, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: roarSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 83f8aa121f712714e80f8a7b4ef44513, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: rushSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: 1e6167a29d2af1645be6d1763253679a, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: rushSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: b52539a9f213e6e4a9c71a7e3ef468fb, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: rushSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: d1328b48b3660224bbcd90cbda648bec, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: damageSound1
+      value: 
+      objectReference: {fileID: 8300000, guid: e03c11b2a8581a54c9eb5331060ffcb2, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: damageSound2
+      value: 
+      objectReference: {fileID: 8300000, guid: 1fdf551665ec385449407e6bbe033b88, type: 3}
+    - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
+      propertyPath: damageSound3
+      value: 
+      objectReference: {fileID: 8300000, guid: 557fa0902c504484e86182c4257c94e9, type: 3}
     - target: {fileID: 3328353883119770636, guid: 1ec1866261306174094fc37688a76468, type: 3}
       propertyPath: virtualCamera
       value: 
