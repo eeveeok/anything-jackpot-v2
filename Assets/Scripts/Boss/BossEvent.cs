@@ -5,34 +5,34 @@ using UnityEngine.UI;
 
 public class BossEvent : MonoBehaviour
 {
-    [Header("ÇÃ·¹ÀÌ¾î ¹× Ã¼Å©Æ÷ÀÎÆ®")]
+    [Header("ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½Æ®")]
     public BasePlayerController player;
     public Transform checkPoint;
 
-    [Header("Ä«¸Þ¶ó ¼³Á¤")]
+    [Header("Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public CinemachineVirtualCamera virtualCamera;
     public Collider2D bossCameraConfiner;
 
-    [Header("Ä«¸Þ¶ó ÁÜ ¼³Á¤")]
+    [Header("Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     public float targetOrthoSize = 12.5f;
     public float zoomDuration = 3.0f;
     public AnimationCurve zoomCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
-    [Header("Ä«¸Þ¶ó Èçµé¸² È¿°ú")]
+    [Header("Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² È¿ï¿½ï¿½")]
     public float shakeIntensity = 1.5f;
     public float shakeFrequency = 2.0f;
     public float shakeDuration = 1.5f;
     public AnimationCurve shakeCurve = AnimationCurve.EaseInOut(0, 1, 1, 0);
 
-    [Header("°ÔÀÓ¿ÀºêÁ§Æ® ¼³Á¤")]
+    [Header("ï¿½ï¿½ï¿½Ó¿ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½")]
     public GameObject bossInvisibleWalls;
-    public GameObject bossObject; // º¸½º ¿ÀºêÁ§Æ®
+    public GameObject bossObject; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
-    [Header("½Ã°£ È¿°ú")]
-    public float timeSlowFactor = 0.3f; // ½Ã°£ ´À·ÁÁü Á¤µµ
+    [Header("ï¿½Ã°ï¿½ È¿ï¿½ï¿½")]
+    public float timeSlowFactor = 0.3f; // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float timeSlowDuration = 1.0f;
 
-    [Header("ÀÌº¥Æ® ¼³Á¤")]
+    [Header("ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½")]
     public bool eventTriggered = false;
 
     private CinemachineConfiner2D confiner;
@@ -42,7 +42,7 @@ public class BossEvent : MonoBehaviour
 
     void Start()
     {
-        // ÄÄÆ÷³ÍÆ® ÃÊ±âÈ­
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ê±ï¿½È­
         if (virtualCamera != null)
         {
             originalOrthoSize = virtualCamera.m_Lens.OrthographicSize;
@@ -64,16 +64,16 @@ public class BossEvent : MonoBehaviour
         eventTriggered = true;
         isEventActive = true;
 
-        // 1. ÇÃ·¹ÀÌ¾î ÀÌµ¿ ¹× ÄÁÆ®·Ñ ÁßÁö
+        // 1. ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (player != null)
         {
-            // ÇÃ·¹ÀÌ¾î ÄÁÆ®·Ñ Àá½Ã ÁßÁö
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             player.enabled = false;
 
-            // ÇÃ·¹ÀÌ¾î À§Ä¡ ÀÌµ¿
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Ä¡ ï¿½Ìµï¿½
             player.transform.position = checkPoint.position;
 
-            // ÇÃ·¹ÀÌ¾î ¹°¸® Á¤Áö
+            // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
@@ -82,30 +82,30 @@ public class BossEvent : MonoBehaviour
             }
         }
 
-        // 2. Ä«¸Þ¶ó ¼³Á¤ ÃÊ±âÈ­
+        // 2. Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
         if (virtualCamera != null)
         {
-            // ¹Ù¿îµù ¼³Á¤
+            // ï¿½Ù¿ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             CinemachineConfiner2D confiner = virtualCamera.GetComponent<CinemachineConfiner2D>();
             if (confiner != null && bossCameraConfiner != null)
             {
                 confiner.m_BoundingShape2D = bossCameraConfiner;
             }
 
-            // º¸½º¿ù È°¼ºÈ­
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
             if (bossInvisibleWalls != null)
             {
                 bossInvisibleWalls.SetActive(true);
             }
         }
 
-        // 3. ½Ã°£ ´À·ÁÁü È¿°ú
+        // 3. ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½
         yield return StartCoroutine(SlowTimeEffect());
 
-        // 4. Ä«¸Þ¶ó ÁÜ ¾Æ¿ô + Èçµé¸² È¿°ú
+        // 4. Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ ï¿½Æ¿ï¿½ + ï¿½ï¿½é¸² È¿ï¿½ï¿½
         yield return StartCoroutine(ZoomAndShakeEffect());
 
-        // 5. ÇÃ·¹ÀÌ¾î ÄÁÆ®·Ñ º¹±¸
+        // 5. ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (player != null)
         {
             Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
@@ -116,7 +116,7 @@ public class BossEvent : MonoBehaviour
             player.enabled = true;
         }
 
-        // 6. º¸½º µîÀå ¾Ö´Ï¸ÞÀÌ¼Ç
+        // 6. ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
         if (bossObject != null)
         {
             yield return StartCoroutine(BossAppearanceAnimation());
@@ -124,17 +124,17 @@ public class BossEvent : MonoBehaviour
 
         isEventActive = false;
 
-        // 7. Æ®¸®°Å ÄÝ¶óÀÌ´õ ºñÈ°¼ºÈ­ (ÇÑ ¹ø¸¸ ½ÇÇà)
+        // 7. Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ (ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         GetComponent<Collider2D>().enabled = false;
     }
 
-    // ½Ã°£ ´À·ÁÁü È¿°ú
+    // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½
     private IEnumerator SlowTimeEffect()
     {
         float originalTimeScale = Time.timeScale;
         float elapsed = 0f;
 
-        // ½Ã°£ Á¡Á¡ ´À·ÁÁö±â
+        // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         while (elapsed < timeSlowDuration / 2)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -144,12 +144,12 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
 
-        // ÀÏÁ¤ ½Ã°£ À¯Áö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         Time.timeScale = timeSlowFactor;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         yield return new WaitForSecondsRealtime(0.5f);
 
-        // ½Ã°£ Á¡Á¡ º¹±¸
+        // ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         elapsed = 0f;
         while (elapsed < timeSlowDuration / 2)
         {
@@ -164,30 +164,30 @@ public class BossEvent : MonoBehaviour
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
-    // Ä«¸Þ¶ó ÁÜ + Èçµé¸² È¿°ú
+    // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½ + ï¿½ï¿½é¸² È¿ï¿½ï¿½
     private IEnumerator ZoomAndShakeEffect()
     {
         float elapsed = 0f;
         float currentSize = virtualCamera.m_Lens.OrthographicSize;
 
-        // Ä«¸Þ¶ó Èçµé¸² È°¼ºÈ­
+        // Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½é¸² È°ï¿½ï¿½È­
         if (noise != null)
         {
             noise.m_AmplitudeGain = shakeIntensity;
             noise.m_FrequencyGain = shakeFrequency;
         }
 
-        // ÁÜ ¾Æ¿ô È¿°ú
+        // ï¿½ï¿½ ï¿½Æ¿ï¿½ È¿ï¿½ï¿½
         while (elapsed < zoomDuration)
         {
             elapsed += Time.unscaledDeltaTime;
             float t = elapsed / zoomDuration;
             float curveValue = zoomCurve.Evaluate(t);
 
-            // ºÎµå·¯¿î ÁÜ ¾Æ¿ô
+            // ï¿½Îµå·¯ï¿½ï¿½ ï¿½ï¿½ ï¿½Æ¿ï¿½
             virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(currentSize, targetOrthoSize, curveValue);
 
-            // Èçµé¸² °­µµ °¨¼Ò
+            // ï¿½ï¿½é¸² ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             if (noise != null)
             {
                 float shakeT = Mathf.Clamp01(elapsed / shakeDuration);
@@ -201,7 +201,7 @@ public class BossEvent : MonoBehaviour
         virtualCamera.m_Lens.OrthographicSize = targetOrthoSize;
         confiner.m_MaxWindowSize = 0f;
 
-        // Èçµé¸² ºñÈ°¼ºÈ­
+        // ï¿½ï¿½é¸² ï¿½ï¿½È°ï¿½ï¿½È­
         if (noise != null)
         {
             noise.m_AmplitudeGain = 0f;
@@ -209,20 +209,20 @@ public class BossEvent : MonoBehaviour
         }
     }
 
-    // º¸½º µîÀå ¾Ö´Ï¸ÞÀÌ¼Ç
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     private IEnumerator BossAppearanceAnimation()
     {
-        // º¸½º ÃÊ±âÈ­ (ºñÈ°¼ºÈ­ »óÅÂ¿¡¼­ ½ÃÀÛ)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ (ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
         bool wasActive = bossObject.activeSelf;
         bossObject.SetActive(false);
 
-        // Àá½Ã ´ë±â
+        // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         yield return new WaitForSecondsRealtime(0.5f);
 
-        // º¸½º È°¼ºÈ­
+        // ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­
         bossObject.SetActive(true);
 
-        // ½ºÄÉÀÏ ¾Ö´Ï¸ÞÀÌ¼Ç (Ä¿Áö¸é¼­ µîÀå)
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ (Ä¿ï¿½ï¿½ï¿½é¼­ ï¿½ï¿½ï¿½ï¿½)
         Vector3 originalScale = bossObject.transform.localScale;
         bossObject.transform.localScale = Vector3.zero;
 
@@ -234,7 +234,7 @@ public class BossEvent : MonoBehaviour
             elapsed += Time.unscaledDeltaTime;
             float t = elapsed / duration;
 
-            // Åº¼º È¿°ú
+            // Åºï¿½ï¿½ È¿ï¿½ï¿½
             float scaleValue = ElasticOut(t);
             bossObject.transform.localScale = originalScale * scaleValue;
 
@@ -244,7 +244,7 @@ public class BossEvent : MonoBehaviour
         bossObject.transform.localScale = originalScale;
     }
 
-    // Åº¼º È¿°ú ÇÔ¼ö
+    // Åºï¿½ï¿½ È¿ï¿½ï¿½ ï¿½Ô¼ï¿½
     private float ElasticOut(float t)
     {
         float p = 0.3f;
@@ -252,7 +252,7 @@ public class BossEvent : MonoBehaviour
     }
     void OnDestroy()
     {
-        // ¾À ÀüÈ¯ ½Ã ½Ã°£ º¹±¸
+        // ï¿½ï¿½ ï¿½ï¿½È¯ ï¿½ï¿½ ï¿½Ã°ï¿½ ï¿½ï¿½ï¿½ï¿½
         Time.timeScale = 1f;
         Time.fixedDeltaTime = 0.02f;
     }
