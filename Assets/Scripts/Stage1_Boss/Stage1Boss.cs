@@ -54,6 +54,22 @@ public class Stage1Boss : MonoBehaviour
     [SerializeField] private float explosionRadius = 3f; // 생성 반경
     [SerializeField] private float explosionInterval = 0.1f; // 생성 간격
 
+    [Header("사운드 설정")] 
+    public AudioClip roarSound1;       // 패턴 시작 우는 소리 1
+    public AudioClip roarSound2;       // 패턴 시작 우는 소리 2
+    public AudioClip walkSound;        // 걷는 소리 (루프)
+    public AudioClip featherShotSound; // 깃털 발사 소리
+    public AudioClip meteorSound;      // 메테오 소리 (낙하 or 폭발)
+    public AudioClip slamSound;        // 내려찍는 소리
+    public AudioClip rageSound;        // 각성 소리
+    public AudioClip deathSound;       // 사망 소리
+    public AudioClip damageSound1;        // 데미지 소리 1
+    public AudioClip damageSound2;        // 데미지 소리 2
+    public AudioClip damageSound3;       // 데미지 소리 3
+
+    private AudioSource walkAudioSource;    // 걷는 스피커
+    private AudioSource featherAudioSource; // 깃털 쏘는 스피커
+
     private Rigidbody2D rb;
     private bool isRage = false;
     private bool isInPattern = false;
@@ -99,6 +115,9 @@ public class Stage1Boss : MonoBehaviour
     // Update 메서드에 추가
     void Update()
     {
+        //걷는 소리 업데이트
+       // UpdateWalkSound();
+
         if (!isInPattern)
         {
             FollowPlayer();
@@ -182,7 +201,13 @@ public class Stage1Boss : MonoBehaviour
                 // 분노 모드 진입 시 패턴 기록 초기화
                 lastNormalPattern = -1;
                 lastRagePattern = -1;
+
+                // 분노 소리 재생
+                SoundManager.Instance.PlaySFXAt(rageSound, transform.position, 2.0f);
             }
+
+            // 우는 소리 재생
+            PlayRandomRoar();
 
             // 패턴 선택
             if (!isRage)
@@ -388,6 +413,9 @@ public class Stage1Boss : MonoBehaviour
         // 정확히 착지 지점에 위치
         transform.position = slamTarget;
         slamTarget = new Vector2(slamTarget.x, slamTarget.y - 0.7f);
+
+        // 사운드 재생
+        SoundManager.Instance.PlaySFXAt(slamSound, transform.position, 2.0f);
 
         // --------------------------------------------------
         // 5. Cinemachine 카메라 흔들림
@@ -768,6 +796,13 @@ public class Stage1Boss : MonoBehaviour
         // --------------------------------------------------
         // 4. 깃털 연사
         // --------------------------------------------------
+
+        // 깃털 발사 소리 재생
+        if (featherShotSound != null)
+        {
+            featherAudioSource = SoundManager.Instance.PlaySFXAt(featherShotSound, transform.position, 1.0f, true);
+        }
+
         yield return new WaitForSeconds(0.5f);
 
         List<GameObject> spawnedFeathers = new List<GameObject>();
@@ -796,6 +831,13 @@ public class Stage1Boss : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.5f);
+        }
+
+        // 깃털 발사 소리 중지
+        if (featherAudioSource != null)
+        {
+            featherAudioSource.Stop();
+            featherAudioSource = null;
         }
 
         // 일정 시간 후 깃털 정리
@@ -1063,6 +1105,9 @@ public class Stage1Boss : MonoBehaviour
             meteorRb.gravityScale = 0f;
         }
 
+        // 낙하 사운드 재생
+        SoundManager.Instance.PlaySFXAt(meteorSound, targetPos, 1.0f);
+
         float fallTime = 0.5f;
         float elapsed = 0f;
 
@@ -1329,6 +1374,12 @@ public class Stage1Boss : MonoBehaviour
             yield return null;
         }
 
+        // 깃털 발사 소리 재생
+        if (featherShotSound != null)
+        {
+            featherAudioSource = SoundManager.Instance.PlaySFXAt(featherShotSound, transform.position, 1.0f, true);
+        }
+
         // 더 많은 깃털, 더 빠른 발사
         //anim.SetTrigger("attack");
         yield return new WaitForSeconds(0.3f);
@@ -1355,6 +1406,13 @@ public class Stage1Boss : MonoBehaviour
             }
 
             yield return new WaitForSeconds(0.1f);
+        }
+
+        // 깃털 발사 소리 중지
+        if (featherAudioSource != null)
+        {
+            featherAudioSource.Stop();
+            featherAudioSource = null;
         }
 
         // 일정 시간 후 깃털 정리
@@ -1434,7 +1492,8 @@ public class Stage1Boss : MonoBehaviour
     public void ApplyDamage(float damage)
     {
         currentHP -= damage;
-
+        // 피격 소리 재생
+        PlayRandomDamageSound();
         // 피격 효과
         Coroutine flashRoutine = StartCoroutine(FlashRed());
         activeCoroutines.Add(flashRoutine);
@@ -1479,6 +1538,15 @@ public class Stage1Boss : MonoBehaviour
         {
             portal.SetActive(true);
         }
+
+        // 걷고 있었다면 소리 끄기
+        if (walkAudioSource != null) walkAudioSource.Stop();
+
+        // 깃털 쏘고 있었다면 소리 끄기
+        if (featherAudioSource != null) featherAudioSource.Stop();
+
+        // 사망 소리 재생
+        SoundManager.Instance.PlaySFXAt(deathSound, transform.position, 1.5f);
 
         // 죽음 이펙트 생성
         CreateDeathEffect();
@@ -1539,6 +1607,81 @@ public class Stage1Boss : MonoBehaviour
             yield return new WaitForSeconds(explosionInterval);
         }
     }
+
+    // ----------------------------------------------------------
+    //                 사운드 효과 메서드
+    // ----------------------------------------------------------
+
+    // 랜덤 우는 소리
+    void PlayRandomRoar()
+    {
+        if (roarSound1 == null && roarSound2 == null) return;
+
+        AudioClip clipToPlay; // 실제로 틀 소리를 담을 임시 변수
+
+        //50% 확률로 선택
+        if (roarSound1 != null && roarSound2 != null)
+            clipToPlay = (Random.value > 0.5f) ? roarSound1 : roarSound2;
+        else
+            // 하나만 있으면 있는 거 선택
+            clipToPlay = (roarSound1 != null) ? roarSound1 : roarSound2;
+
+        // 최종 선택된 소리 재생
+        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 1.2f);
+    }
+
+    // 랜덤 피격 소리
+    void PlayRandomDamageSound()
+    {
+        // 1. 비어있지 않은 클립만 리스트에 담기
+        List<AudioClip> validClips = new List<AudioClip>();
+
+        if (damageSound1 != null) validClips.Add(damageSound1);
+        if (damageSound2 != null) validClips.Add(damageSound2);
+        if (damageSound3 != null) validClips.Add(damageSound3);
+
+        // 2. 할당된 소리가 없으면 무시
+        if (validClips.Count == 0) return;
+
+        // 3. 랜덤 선택
+        int randomIndex = Random.Range(0, validClips.Count);
+        AudioClip selectedClip = validClips[randomIndex];
+
+        // 4. 보스 위치에서 3D 사운드로 재생 (볼륨 1.0)
+        SoundManager.Instance.PlaySFXAt(selectedClip, transform.position, 1.0f);
+    }
+
+    // 걷기 소리 업데이트
+    void UpdateWalkSound()
+    {
+        // 1. 조건 체크: 속도가 0.1보다 크고(움직임) AND 패턴 공격 중이 아닐 때
+        bool isMoving = rb.velocity.magnitude > 0.1f && !isInPattern;
+
+        if (isMoving)
+        {
+            // 2. 움직이는데 소리가 안 나고 있다면? (처음 움직이기 시작)
+            if (walkAudioSource == null)
+            {
+                // 루프(true)로 소리를 켜고, 그 스피커를 변수에 저장!
+                walkAudioSource = SoundManager.Instance.PlaySFXAt(walkSound, transform.position, 1.0f, true);
+            }
+            else
+            {
+                // 3. 이미 소리가 나고 있다면? -> 스피커 위치를 보스 위치로 계속 이동
+                walkAudioSource.transform.position = transform.position;
+            }
+        }
+        else
+        {
+            // 4. 멈췄는데 스피커가 켜져 있다면? -> 끄기
+            if (walkAudioSource != null)
+            {
+                walkAudioSource.Stop();
+                walkAudioSource = null; // 변수 비우기 (다음에 또 켜야 하니까)
+            }
+        }
+    }
+
 
     // ----------------------------------------------------------
     //                 메모리 관리 메서드
