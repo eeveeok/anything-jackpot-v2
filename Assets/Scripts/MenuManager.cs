@@ -10,7 +10,7 @@ public class MenuManager : MonoBehaviour
     // Start 버튼 → 게임 시작
     public void OnClickStart()
     {
-        SceneManager.LoadScene("TestScene");   // 메인 게임 씬 이름
+        SceneManager.LoadScene("FirstScene");   // 메인 게임 씬 이름
     }
 
     // Exit 버튼 → 게임 종료
