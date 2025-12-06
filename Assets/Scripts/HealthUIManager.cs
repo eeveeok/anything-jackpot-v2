@@ -1,24 +1,44 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class HealthUIManager : MonoBehaviour
 {
     [Header("Mask Icons (Left to Right)")]
-    public Image[] masks;                // 하트 3개
+    public Image[] masks;                // 하트 5개
     public Sprite normalMaskSprite;
     public Sprite brokenMaskSprite;
 
     [Header("Health Settings")]
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     private int currentHealth;
 
     [Header("Blink Settings")]
     public float blinkInterval = 0.15f;   // 깜빡임 속도 (빠르게/느리게)
     public int blinkCount = 3;
 
+    GameOverManager gameOverManager;
+    LaserShooter player;
+
+    void Awake()
+    {
+        // 씬 로드 이벤트 등록
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
     void Start()
     {
+        currentHealth = maxHealth;
+        UpdateUI();
+
+        gameOverManager = FindObjectOfType<GameOverManager>();
+        player = FindObjectOfType<LaserShooter>();
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // 다음 스테이지로 넘어올 때 체력 FULL 회복
         currentHealth = maxHealth;
         UpdateUI();
     }
@@ -43,6 +63,23 @@ public class HealthUIManager : MonoBehaviour
 
         // 전체 하트 깜빡임
         StartCoroutine(BlinkAllMasks());
+
+        // 체력 0 → 게임오버 화면 출력
+        if (currentHealth == 0)
+        {
+            TriggerGameOver();
+        }
+    }
+
+    void TriggerGameOver()
+    {
+        if (player != null)
+            player.enabled = false;
+
+        if (gameOverManager != null)
+            gameOverManager.TriggerGameOver();
+        else
+            Debug.LogWarning("GameOverManager not found!");
     }
 
     void UpdateUI()

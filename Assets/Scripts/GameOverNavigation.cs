@@ -23,6 +23,8 @@ public class GameOverNavigation : MonoBehaviour
 
     void Update()
     {
+        if (!GameOverManager.isGameOver) return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             index = 0;

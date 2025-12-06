@@ -42,8 +42,10 @@ public class LaserShooter : BasePlayerController
     // 이동 속도 계산 (레이저 발사 중 감속)
     protected override float GetCurrentMoveSpeed()
     {
+
         return isLaserActive ? moveSpeed * 0.6f : moveSpeed;
     }
+
 
     // 바운스 상태 확인
     protected override bool IsBouncing()

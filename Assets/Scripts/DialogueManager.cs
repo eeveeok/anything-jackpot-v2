@@ -50,22 +50,22 @@ public class DialogueManager : MonoBehaviour
 
         if (scene == "Level 2-1")
         {
-            StartDialogue(npc1Dialogue);
+            StartDialogue(npc3Dialogue);
         }
 
         if (scene == "Level 2-20")
         {
-            StartDialogue(npc1Dialogue);
+            StartDialogue(npc4Dialogue);
         }
 
         if (scene == "Level 3-1")
         {
-            StartDialogue(npc1Dialogue);
+            StartDialogue(npc5Dialogue);
         }
 
         if (scene == "Level 3-10")
         {
-            StartDialogue(npc1Dialogue);
+            StartDialogue(npc6Dialogue);
         }
 
     }

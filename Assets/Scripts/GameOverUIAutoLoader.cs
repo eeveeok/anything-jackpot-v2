@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UIAutoLoader : MonoBehaviour
+public class GameOverUIAutoLoader : MonoBehaviour
 {
-   
-    public GameObject dialogueUI;
+    
+    public GameObject GameOverUI;
 
     void Awake()
     {
@@ -14,13 +14,12 @@ public class UIAutoLoader : MonoBehaviour
         if (scene == "Title")
             return;
 
-       
+
         if (FindObjectOfType<GameOverManager>() != null)
             return;
 
-        
-        GameObject ui = Instantiate(dialogueUI);
+
+        GameObject ui = Instantiate(GameOverUI);
         DontDestroyOnLoad(ui);
     }
 }
-
