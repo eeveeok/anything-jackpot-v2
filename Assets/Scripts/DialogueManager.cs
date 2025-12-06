@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -28,10 +29,44 @@ public class DialogueManager : MonoBehaviour
     private bool isDialogueActive = false;
 
     void Start()
-    {
+    {        
+
         dialoguePanel.SetActive(false);
         nextIndicator.SetActive(false);
         portraitImage.SetActive(false);   // 처음에 초상화 OFF
+
+        string scene = SceneManager.GetActiveScene().name;
+
+        if (scene == "FirstScene")
+        {
+            StartDialogue(npc1Dialogue);
+        }
+
+        if (scene == "Level 1-5")
+        {
+            StartDialogue(npc2Dialogue);
+        }
+
+        if (scene == "Level 2-1")
+        {
+            StartDialogue(npc1Dialogue);
+        }
+
+        if (scene == "Level 2-20")
+        {
+            StartDialogue(npc1Dialogue);
+        }
+
+        if (scene == "Level 3-1")
+        {
+            StartDialogue(npc1Dialogue);
+        }
+
+        if (scene == "Level 3-10")
+        {
+            StartDialogue(npc1Dialogue);
+        }
+
     }
 
     void Update()
