@@ -100,9 +100,6 @@ public class LaserShooter : MonoBehaviour
 
     void Update()
     {
-        /////
-        //Debug.Log(isBounced);
-
         HandleInput();
         UpdateFacingDirection();
         UpdateAnimation();
