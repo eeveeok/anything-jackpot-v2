@@ -68,8 +68,8 @@ public class LaserProjectile : MonoBehaviour
         // 플레이어와 충돌 체크
         if (collision.CompareTag("Player"))
         {
-            LaserShooter playerScript = collision.GetComponent<LaserShooter>();
-            if (playerScript != null && !playerScript.isDead)
+            BasePlayerController playerScript = collision.GetComponent<BasePlayerController>();
+            if (playerScript != null && !playerScript.IsDead)
             {
                 playerScript.PlayerDie();
             }

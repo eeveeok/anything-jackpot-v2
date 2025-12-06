@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a100b4c25d3827409d5f29a024aad37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 7
   jumpForce: 10
   cannonEffectPrefab: {fileID: 2559277340021799047, guid: a41b05d67a8b91d40b89e1c61656b5b8, type: 3}
   recoilForce: 30

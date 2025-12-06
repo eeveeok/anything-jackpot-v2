@@ -23,6 +23,8 @@ public class GameOverNavigation : MonoBehaviour
 
     void Update()
     {
+        if (!GameOverManager.isGameOver) return;
+
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             index = 0;
@@ -57,6 +59,6 @@ public class GameOverNavigation : MonoBehaviour
             targetRT.position.z
         );
 
-        EventSystem.current.SetSelectedGameObject(target.gameObject);
+        //EventSystem.current.SetSelectedGameObject(target.gameObject);
     }
 }
