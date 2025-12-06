@@ -43,6 +43,7 @@ public abstract class BasePlayerController : MonoBehaviour
     // 매니저 참조
     protected DialogueManager dialogueManager;
     protected PauseManager pauseManager;
+    protected HealthUIManager hpManager;
 
     // 애니메이터 파라미터 문자열
     protected const string JUMP_PARAM = "Jump";
@@ -85,6 +86,7 @@ public abstract class BasePlayerController : MonoBehaviour
 
         dialogueManager = FindObjectOfType<DialogueManager>();
         pauseManager = FindObjectOfType<PauseManager>();
+        hpManager = FindObjectOfType<HealthUIManager>();
 
         if (rb == null) rb = gameObject.AddComponent<Rigidbody2D>();
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
@@ -218,6 +220,9 @@ public abstract class BasePlayerController : MonoBehaviour
 
         isDead = true;
         rb.simulated = false;
+
+        // 목숨 감소
+        hpManager.TakeDamage(1);
 
         // 애니메이션 중지
         ResetAllAnimations();

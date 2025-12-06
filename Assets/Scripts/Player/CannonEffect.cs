@@ -40,8 +40,6 @@ public class CannonEffect : MonoBehaviour
     // 오브젝트 파괴 처리
     private void BreakObject(GameObject breakableObject)
     {
-        Debug.Log($"CannonEffect hit: {breakableObject.name}");
-
         // 1. 타일맵인지 확인
         Tilemap tilemap = breakableObject.GetComponent<Tilemap>();
         if (tilemap != null)
@@ -66,8 +64,6 @@ public class CannonEffect : MonoBehaviour
         Vector3Int centerCell = tilemap.WorldToCell(center);
         int radius = Mathf.CeilToInt(tileBreakRadius / tilemap.cellSize.x);
 
-        Debug.Log($"Breaking tiles around cell: {centerCell} with radius: {radius}");
-
         // 반경 내 모든 셀 확인
         for (int x = -radius; x <= radius; x++)
         {
@@ -85,7 +81,6 @@ public class CannonEffect : MonoBehaviour
                     if (tilemap.HasTile(cell))
                     {
                         tilemap.SetTile(cell, null);
-                        Debug.Log($"Tile destroyed at cell: {cell}");
                     }
                 }
             }
