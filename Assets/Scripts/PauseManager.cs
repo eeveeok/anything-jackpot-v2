@@ -4,16 +4,16 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pausePanel;
-    private bool isPaused = false;
     public LaserShooter player;   // 플레이어 스크립트 연결
 
+    [HideInInspector]
+    public bool isPaused = false;
 
     void Start()
     {
         pausePanel.SetActive(false);  // 시작할 때 항상 숨김
         Time.timeScale = 1f;          // 게임 속도 정상화
     }
-
 
     void Update()
     {

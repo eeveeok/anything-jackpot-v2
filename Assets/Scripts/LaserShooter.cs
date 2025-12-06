@@ -63,6 +63,7 @@ public class LaserShooter : MonoBehaviour
     // ÂüÁ¶
     private SpriteRenderer spriteRenderer;
     private DialogueManager dialogueManager;
+    private PauseManager pauseManager;
 
     void Start()
     {
@@ -71,6 +72,7 @@ public class LaserShooter : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogueManager = FindObjectOfType<DialogueManager>();
+        pauseManager = FindObjectOfType<PauseManager>();
 
         if (rb == null)
         {
@@ -121,7 +123,7 @@ public class LaserShooter : MonoBehaviour
 
     void HandleInput()
     {
-        if (dialogueManager.isDialogueActive) return;
+        if (dialogueManager.isDialogueActive || pauseManager.isPaused) return;
 
         if (isDead)
         {

@@ -51,6 +51,7 @@ public class CannonShooter : MonoBehaviour
     // 참조
     private SpriteRenderer spriteRenderer;
     private DialogueManager dialogueManager;
+    private PauseManager pauseManager;
 
     void Start()
     {
@@ -59,6 +60,7 @@ public class CannonShooter : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogueManager = FindObjectOfType<DialogueManager>();
+        pauseManager = FindObjectOfType<PauseManager>();
 
         if (dialogueManager != null)
         {
@@ -90,6 +92,8 @@ public class CannonShooter : MonoBehaviour
 
     void HandleInput()
     {
+        if (dialogueManager.isDialogueActive || pauseManager.isPaused) return;
+
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && isGrounded)
