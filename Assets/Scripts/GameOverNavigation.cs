@@ -59,6 +59,6 @@ public class GameOverNavigation : MonoBehaviour
             targetRT.position.z
         );
 
-        EventSystem.current.SetSelectedGameObject(target.gameObject);
+        //EventSystem.current.SetSelectedGameObject(target.gameObject);
     }
 }
