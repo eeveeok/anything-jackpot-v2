@@ -394,7 +394,7 @@ public class Stage3Boss : MonoBehaviour
         isInPattern = true;
         rb.velocity = Vector2.zero;
 
-        float groundY = transform.position.y - 1.5f;
+        float groundY = transform.position.y + 0.55f;
         int direction = (player.position.x > transform.position.x) ? 1 : -1;
 
         for (int i = 1; i <= 10; i++)
@@ -677,7 +677,7 @@ public class Stage3Boss : MonoBehaviour
         isInPattern = true;
         rb.velocity = Vector2.zero;
 
-        float groundY = transform.position.y - 1f;
+        float groundY = transform.position.y + 2f;
 
         for (int i = 1; i <= rageWaveCount; i++)
         {
