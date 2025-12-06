@@ -222,7 +222,10 @@ public abstract class BasePlayerController : MonoBehaviour
         rb.simulated = false;
 
         // 목숨 감소
-        hpManager.TakeDamage(1);
+        if (hpManager != null)
+        {
+            hpManager.TakeDamage(1);
+        }
 
         // 애니메이션 중지
         ResetAllAnimations();
