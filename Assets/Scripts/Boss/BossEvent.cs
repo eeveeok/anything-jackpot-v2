@@ -225,7 +225,6 @@ public class BossEvent : MonoBehaviour
         // 스케일 애니메이션 (커지면서 등장)
         Vector3 originalScale = bossObject.transform.localScale;
         bossObject.transform.localScale = Vector3.zero;
-        bossObject.transform.position = new Vector2(bossObject.transform.position.x, bossObject.transform.position.y - 1f);
 
         float duration = 1f;
         float elapsed = 0f;
