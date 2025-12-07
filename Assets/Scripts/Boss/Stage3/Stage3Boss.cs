@@ -24,7 +24,7 @@ public class Stage3Boss : MonoBehaviour
     public GameObject portal;              // 보스 사망 시 활성화 될 포탈
 
     [Header("보스 스탯")]
-    public float maxHP = 1000f;
+    public float maxHP = 900f;
     public float currentHP;
 
     [Header("추적 AI")]
