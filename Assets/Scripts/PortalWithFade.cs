@@ -22,6 +22,8 @@ public class PortalWithFade : MonoBehaviour
         if (!collision.collider.CompareTag("Player")) return;
         if (isProcessing) return;
 
+        collision.collider.enabled = false;
+
         StartCoroutine(FadeTeleport(collision.collider));
     }
 
