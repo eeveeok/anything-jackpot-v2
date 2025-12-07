@@ -166,7 +166,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -64.37, y: -37.919994, z: 0}
-  m_TranslationOffset: {x: -64.608444, y: -1.0069504, z: 7.1428576}
+  m_TranslationOffset: {x: -68.382385, y: -1.0069504, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -7055,7 +7055,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.9638195, y: -51.94161, z: -10}
+  m_LocalPosition: {x: 6.2473392, y: -51.94161, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7546,7 +7546,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 32.97, y: -37.92, z: 0}
-  m_TranslationOffset: {x: 32.73156, y: -1.0069542, z: 7.1428576}
+  m_TranslationOffset: {x: 28.957615, y: -1.0069542, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -14042,6 +14042,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &690144759
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2526947493359909445, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_Name
+      value: UILoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 408.19998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 177.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2526947493359909446, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aec5852c8565e0848baf2966b5755ad3, type: 3}
 --- !u!1001 &720601714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14179,7 +14236,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 0, y: -18.94, z: 0}
-  m_TranslationOffset: {x: -0.23844251, y: 17.973043, z: 7.1428576}
+  m_TranslationOffset: {x: -4.0123854, y: 17.973043, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -65498,7 +65555,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -64.37, y: 0, z: 0}
-  m_TranslationOffset: {x: -64.608444, y: 36.913044, z: 7.1428576}
+  m_TranslationOffset: {x: -68.382385, y: 36.913044, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -72214,7 +72271,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -64.37, y: -18.94, z: 0}
-  m_TranslationOffset: {x: -64.608444, y: 17.973043, z: 7.1428576}
+  m_TranslationOffset: {x: -68.382385, y: 17.973043, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -78754,7 +78811,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 32.97, y: -18.94, z: 0}
-  m_TranslationOffset: {x: 32.73156, y: 17.973043, z: 7.1428576}
+  m_TranslationOffset: {x: 28.957615, y: 17.973043, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -85649,7 +85706,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 378397562522100397, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: -0.23844251
+      value: -4.0123854
       objectReference: {fileID: 0}
     - target: {fileID: 378397562522100397, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -85665,7 +85722,7 @@ PrefabInstance:
       objectReference: {fileID: 519420032}
     - target: {fileID: 378397563087847482, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.x
-      value: 32.73156
+      value: 28.957615
       objectReference: {fileID: 0}
     - target: {fileID: 378397563087847482, guid: a8098459d957e3041889378ba6bfd125, type: 3}
       propertyPath: m_TranslationOffset.y
@@ -87083,7 +87140,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -31.400002, y: 0, z: 0}
-  m_TranslationOffset: {x: -31.638445, y: 36.913044, z: 7.1428576}
+  m_TranslationOffset: {x: -35.412388, y: 36.913044, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -93671,7 +93728,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: 0, y: -37.919994, z: 0}
-  m_TranslationOffset: {x: -0.23844251, y: -1.0069504, z: 7.1428576}
+  m_TranslationOffset: {x: -4.0123854, y: -1.0069504, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -100211,7 +100268,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -31.400002, y: -37.92, z: 0}
-  m_TranslationOffset: {x: -31.638445, y: -1.0069542, z: 7.1428576}
+  m_TranslationOffset: {x: -35.412388, y: -1.0069542, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -106871,7 +106928,7 @@ PositionConstraint:
   m_Enabled: 1
   m_Weight: 0.7
   m_TranslationAtRest: {x: -31.400002, y: -18.94, z: 0}
-  m_TranslationOffset: {x: -31.638445, y: 17.973043, z: 7.1428576}
+  m_TranslationOffset: {x: -35.412388, y: 17.973043, z: 7.1428576}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
