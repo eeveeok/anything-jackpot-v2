@@ -7,7 +7,7 @@ public class PauseManager : MonoBehaviour
     public LaserShooter player;   // 플레이어 스크립트 연결
 
     [HideInInspector]
-    public bool isPaused = false;
+    public static bool isPaused = false;
 
     [Header("사운드 설정")]
     public AudioClip pauseSound;       // 정지 소리

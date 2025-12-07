@@ -31,6 +31,8 @@ public class PauseNavigation : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.isPaused == false) return;
+
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             //소리 재생

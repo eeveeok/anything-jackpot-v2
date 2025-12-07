@@ -123,7 +123,7 @@ public abstract class BasePlayerController : MonoBehaviour
     protected bool IsGamePaused()
     {
         return (dialogueManager != null && dialogueManager.isDialogueActive) ||
-               (pauseManager != null && pauseManager.isPaused) ||
+               (pauseManager != null && PauseManager.isPaused) ||
                isDead;
     }
 
