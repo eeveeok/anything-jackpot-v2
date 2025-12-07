@@ -30,6 +30,7 @@ public abstract class BasePlayerController : MonoBehaviour
     public AudioClip respawnSound;        // 스폰 소리
     public AudioClip spikeSound;          // 스파이크 피격 소리
     public AudioClip tractorBeamSound;    // 트랙터빔 피격 소리
+    public AudioClip jumpSound;          // 점프 소리
 
     private AudioSource walkSource;
 
@@ -71,7 +72,7 @@ public abstract class BasePlayerController : MonoBehaviour
         InitializePosition();
 
         //스폰 사운드 재생
-        SoundManager.Instance.PlaySFX(respawnSound, 0.1f);
+        SoundManager.Instance.PlaySFX(respawnSound, 0.3f);
     }
 
     protected virtual void Update()
@@ -144,6 +145,8 @@ public abstract class BasePlayerController : MonoBehaviour
 
     protected virtual void Jump()
     {
+        // 점프 소리 재생
+        SoundManager.Instance.PlaySFX(jumpSound, 0.2f);
         rb.sharedMaterial = airMaterial;
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
@@ -296,7 +299,7 @@ public abstract class BasePlayerController : MonoBehaviour
         SetPlayerVisible(true);
 
         // 사운드 재생
-        SoundManager.Instance.PlaySFX(respawnSound, 0.1f);
+        SoundManager.Instance.PlaySFX(respawnSound, 0.3f);
 
         isDead = false;
         isGrounded = false;
@@ -406,7 +409,7 @@ public abstract class BasePlayerController : MonoBehaviour
             if (walkSource == null)
             {
                 // SoundManager를 통해 루프 재생하고, 해당 스피커를 변수에 저장
-                walkSource = SoundManager.Instance.PlaySFX(walkSound, 0.2f, true);
+                walkSource = SoundManager.Instance.PlaySFX(walkSound, 0.1f, true);
             }
         }
         else

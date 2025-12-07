@@ -177,6 +177,7 @@ MonoBehaviour:
   respawnSound: {fileID: 8300000, guid: 930cd30d057543a4ab7e35c55f711959, type: 3}
   spikeSound: {fileID: 8300000, guid: 13a25b56a9bc3ff4596aacec14427ad9, type: 3}
   tractorBeamSound: {fileID: 8300000, guid: 5fd9887cd614155479dbb5f007d61319, type: 3}
+  jumpSound: {fileID: 8300000, guid: 2dfed3c17205a084bbd165f6eed99fe4, type: 3}
   cannonEffectPrefab: {fileID: 2559277340021799047, guid: a41b05d67a8b91d40b89e1c61656b5b8, type: 3}
   recoilForce: 30
   recoilDuration: 1
