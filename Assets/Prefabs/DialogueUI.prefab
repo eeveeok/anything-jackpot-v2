@@ -699,6 +699,7 @@ MonoBehaviour:
   nextIndicator: {fileID: 8635916513529557856}
   portraitImage: {fileID: 8635916512189889303}
   portraitImage2: {fileID: 6262835985128020899}
+  heartPanel: {fileID: 8635916513635443212}
   typingSpeed: 0.04
   npc1Dialogue: {fileID: 11400000, guid: f6b83f377fce71a4fa444d0011df5421, type: 2}
   npc2Dialogue: {fileID: 11400000, guid: 7678cb25d18767d479dd454b78b31f37, type: 2}
@@ -771,6 +772,7 @@ MonoBehaviour:
   maxHealth: 5
   blinkInterval: 0.15
   blinkCount: 3
+  heartPanel: {fileID: 8635916513635443212}
 --- !u!1 &8635916513529557856
 GameObject:
   m_ObjectHideFlags: 0

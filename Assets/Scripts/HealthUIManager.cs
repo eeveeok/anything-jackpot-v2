@@ -18,6 +18,9 @@ public class HealthUIManager : MonoBehaviour
     public float blinkInterval = 0.15f;   // 깜빡임 속도 (빠르게/느리게)
     public int blinkCount = 3;
 
+    [Header("UI Root")]
+    public GameObject heartPanel;
+
     GameOverManager gameOverManager;
     LaserShooter player;
 
@@ -29,6 +32,10 @@ public class HealthUIManager : MonoBehaviour
 
     void Start()
     {
+        string scene = SceneManager.GetActiveScene().name;
+
+        
+
         currentHealth = maxHealth;
         UpdateUI();
 
@@ -38,6 +45,15 @@ public class HealthUIManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        bool isEnding = scene.name == "EndingScene";
+
+        if (heartPanel != null)
+            heartPanel.SetActive(!isEnding);
+
+        // 엔딩씬일 땐 체력 로직 안 돌림
+        if (isEnding)
+            return;
+
         // 다음 스테이지로 넘어올 때 체력 FULL 회복
         currentHealth = maxHealth;
         UpdateUI();

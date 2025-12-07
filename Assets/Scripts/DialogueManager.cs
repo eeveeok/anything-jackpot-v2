@@ -12,6 +12,9 @@ public class DialogueManager : MonoBehaviour
     public GameObject portraitImage;
     public GameObject portraitImage2;
 
+    [Header("UI Panels")]
+    public GameObject heartPanel;
+
     [Header("Typing Settings")]
     public float typingSpeed = 0.04f;
 
@@ -44,6 +47,9 @@ public class DialogueManager : MonoBehaviour
         portraitImage2.SetActive(false);
 
         string scene = SceneManager.GetActiveScene().name;
+
+        //if (scene == "EndingScene" && heartPanel != null)
+        //    heartPanel.SetActive(false);
 
         if (scene == "FirstScene")
         {
@@ -201,5 +207,10 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
         portraitImage.SetActive(false);
+
+        if (currentDialogue == npc8Dialogue)
+        {
+            SceneManager.LoadScene("Title");
+        }
     }
 }
