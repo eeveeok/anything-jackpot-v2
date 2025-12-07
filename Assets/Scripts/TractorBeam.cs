@@ -108,11 +108,21 @@ public class TractorBeam : MonoBehaviour
         {
             rb.AddForce(new Vector2(directionX * horizontalPullForce, 0f), ForceMode2D.Force);
         }
+        else
+        {
+            // [수정] 최대 속도를 넘으면? -> 즉시 최대 속도로 강제 고정!
+            Vector2 v = rb.velocity;
 
-        // ============================
-        // 2) Y축 정렬 (스프링 + 데드존)
-        // ============================
-        float deltaY = beamY - rb.position.y;
+            // 현재 방향(오른쪽 1, 왼쪽 -1)은 유지하면서 속도만 maxHorizontalSpeed로 맞춤
+            v.x = Mathf.Sign(v.x) * maxHorizontalSpeed;
+
+            rb.velocity = v;
+        }
+
+            // ============================
+            // 2) Y축 정렬 (스프링 + 데드존)
+            // ============================
+            float deltaY = beamY - rb.position.y;
         float absDeltaY = Mathf.Abs(deltaY);
 
         // 빔 중심 근처면 Y축 힘은 거의 안 줌 (살짝 떠다닐 수 있게)
