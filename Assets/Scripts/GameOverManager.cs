@@ -86,8 +86,8 @@ public class GameOverManager : MonoBehaviour
 
         GameOverManager.isGameOver = false;
 
-        // 현재 씬 다시 로드
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // 메인 메뉴 씬으로 이동
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void OnClickNo()
