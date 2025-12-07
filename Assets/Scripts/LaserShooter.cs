@@ -74,10 +74,6 @@ public class LaserShooter : BasePlayerController
     // 애니메이션 업데이트
     protected override void UpdateAnimation()
     {
-        if (animator != null)
-        {
-            animator.SetBool(IS_LASER_PARAM, isLaserActive);
-        }
     }
 
     // 레이저 발사

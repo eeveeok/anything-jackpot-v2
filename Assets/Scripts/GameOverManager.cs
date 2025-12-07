@@ -101,6 +101,8 @@ public class GameOverManager : MonoBehaviour
         if (player != null)
             player.enabled = true;
 
+        GameOverManager.isGameOver = false;
+
         SceneManager.LoadScene("Title");
     }
 }
