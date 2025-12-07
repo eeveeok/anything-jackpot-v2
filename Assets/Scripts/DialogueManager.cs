@@ -10,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public GameObject nextIndicator;
     public GameObject portraitImage;
+    public GameObject portraitImage2;
 
     [Header("Typing Settings")]
     public float typingSpeed = 0.04f;
@@ -40,6 +41,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         nextIndicator.SetActive(false);
         portraitImage.SetActive(false);   // 처음에 초상화 OFF
+        portraitImage2.SetActive(false);
 
         string scene = SceneManager.GetActiveScene().name;
 
@@ -149,10 +151,12 @@ public class DialogueManager : MonoBehaviour
         {
             SoundManager.Instance.PlaySFX(chatSound1, 0.2f);
             portraitImage.SetActive(true);
+            portraitImage2.SetActive(false);
         }
-        else
+        else if(line.speaker == "Nemo")
         { 
-            SoundManager.Instance.PlaySFX(chatSound2, 0.2f);  
+            SoundManager.Instance.PlaySFX(chatSound2, 0.2f);
+            portraitImage2.SetActive(true);
             portraitImage.SetActive(false);
         }
 
