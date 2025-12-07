@@ -111,6 +111,8 @@ public class DialogueManager : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Alpha7))
                 StartDialogue(npc7Dialogue);
+
+
         }
 
         // 대화 진행 중 스페이스바로 넘기기

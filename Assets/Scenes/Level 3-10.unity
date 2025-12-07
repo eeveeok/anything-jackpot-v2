@@ -13393,7 +13393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5495767373269673599, guid: f55bb7f2a253434498a2a02186b510a6, type: 3}
       propertyPath: sceneToLoad
-      value: Title
+      value: EndingScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f55bb7f2a253434498a2a02186b510a6, type: 3}
@@ -20024,7 +20024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.760255, y: 20.519999, z: -10}
+  m_LocalPosition: {x: 10.76821, y: 20.519999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
