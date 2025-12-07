@@ -9,6 +9,10 @@ public class PauseManager : MonoBehaviour
     [HideInInspector]
     public bool isPaused = false;
 
+    [Header("사운드 설정")]
+    public AudioClip pauseSound;       // 정지 소리
+    public AudioClip selectSound;     // 선택 소리
+
     void Start()
     {
         pausePanel.SetActive(false);  // 시작할 때 항상 숨김
@@ -29,6 +33,9 @@ public class PauseManager : MonoBehaviour
 
     public void Pause()
     {
+        // 소리 재생
+        SoundManager.Instance.PlaySFX(pauseSound, 0.2f);
+
         isPaused = true;
         pausePanel.SetActive(true);
         Time.timeScale = 0f; // 게임 멈춤
@@ -39,6 +46,9 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
+        // 소리 재생
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1f; // 게임 재개
@@ -49,7 +59,8 @@ public class PauseManager : MonoBehaviour
 
     public void ExitToMenu()
     {
+        Resume();
         Time.timeScale = 1f;
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("Title");
     }
 }

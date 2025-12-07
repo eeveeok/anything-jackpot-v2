@@ -23,6 +23,10 @@ public class DialogueManager : MonoBehaviour
     public DialogueData npc6Dialogue;
     public DialogueData npc7Dialogue;
 
+    [Header("사운드 설정")]
+    public AudioClip chatSound1;       // 채팅 소리1
+    public AudioClip chatSound2;       // 채팅 소리2
+
     private DialogueData currentDialogue;
     private int currentIndex = 0;
     private bool isTyping = false;
@@ -132,9 +136,15 @@ public class DialogueManager : MonoBehaviour
 
         // 주인공일 때만 초상화 ON
         if (line.speaker == "player")
+        {
+            SoundManager.Instance.PlaySFX(chatSound1, 0.2f);
             portraitImage.SetActive(true);
+        }
         else
+        { 
+            SoundManager.Instance.PlaySFX(chatSound2, 0.2f);  
             portraitImage.SetActive(false);
+        }
 
         dialogueText.text = "";
         StartCoroutine(TypeText(line.text));

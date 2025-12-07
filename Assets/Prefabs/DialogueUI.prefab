@@ -629,6 +629,8 @@ MonoBehaviour:
   npc5Dialogue: {fileID: 11400000, guid: e3ee395f00917bc4c85b913c82f497c5, type: 2}
   npc6Dialogue: {fileID: 11400000, guid: b495cd5c203ace844954076614478a32, type: 2}
   npc7Dialogue: {fileID: 11400000, guid: 55f2fe600e1f21548bbdf3dac8db2ee1, type: 2}
+  chatSound1: {fileID: 8300000, guid: 8eeefa6400bc0bd4d9d35538b05739e2, type: 3}
+  chatSound2: {fileID: 8300000, guid: 701fb218cd2f57c4e981fd3f4a901838, type: 3}
   isDialogueActive: 0
 --- !u!1 &8635916513405515969
 GameObject:
