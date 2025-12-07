@@ -192,6 +192,8 @@ MonoBehaviour:
   characterCenter: {fileID: 0}
   mainCamera: {fileID: 0}
   direction: {x: 1, y: 0}
+  breakSound1: {fileID: 8300000, guid: 7e4137a2a843dfa4da0ecb1699ee0c7f, type: 3}
+  breakSound2: {fileID: 8300000, guid: b5c77aa572d87834ab8ec081faa31e97, type: 3}
 --- !u!82 &2839583803165833419
 AudioSource:
   m_ObjectHideFlags: 0

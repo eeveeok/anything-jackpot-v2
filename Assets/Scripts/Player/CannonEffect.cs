@@ -10,6 +10,10 @@ public class CannonEffect : MonoBehaviour
     public float tileBreakRadius = 2.5f;
     public LayerMask breakableLayers;
 
+    [Header("사운드 설정")]
+    public AudioClip breakSound1;       // breakable 소리
+    public AudioClip breakSound2;
+
     private float timer = 0f;
     private bool hasTriggered = false;
 
@@ -80,6 +84,8 @@ public class CannonEffect : MonoBehaviour
                     // 타일이 있으면 제거
                     if (tilemap.HasTile(cell))
                     {
+                        // 타일 파괴 소리 재생
+                        PlayRandomBreak();
                         tilemap.SetTile(cell, null);
                     }
                 }
@@ -92,5 +98,23 @@ public class CannonEffect : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, tileBreakRadius);
+    }
+
+    //breakable 소리 재생 효과
+    void PlayRandomBreak()
+    {
+        if (breakSound1 == null && breakSound2 == null) return;
+
+        AudioClip clipToPlay; // 실제로 틀 소리를 담을 임시 변수
+
+        //50% 확률로 선택
+        if (breakSound1 != null && breakSound2 != null)
+            clipToPlay = (Random.value > 0.5f) ? breakSound1 : breakSound2;
+        else
+            // 하나만 있으면 있는 거 선택
+            clipToPlay = (breakSound1 != null) ? breakSound1 : breakSound2;
+
+        // 최종 선택된 소리 재생
+        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 0.5f);
     }
 }

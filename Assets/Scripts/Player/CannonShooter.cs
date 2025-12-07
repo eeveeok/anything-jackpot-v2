@@ -37,7 +37,7 @@ public class CannonShooter : BasePlayerController
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
             //사운드 재생
-            SoundManager.Instance.PlaySFX(cannonSound, 0.05f);
+            SoundManager.Instance.PlaySFX(cannonSound, 0.1f);
             ShootCannon();
         }
     }

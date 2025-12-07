@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class LaserBeam : MonoBehaviour
 {
@@ -38,11 +39,15 @@ public class LaserBeam : MonoBehaviour
     public float maxLaserLength = 200f;
 
     [HideInInspector]
-    public Transform characterCenter;
+    public UnityEngine.Transform characterCenter;
     [HideInInspector]
     public Camera mainCamera;
     [HideInInspector]
     public Vector2 direction;
+
+    [Header("사운드 설정")]
+    public AudioClip breakSound1;       // breakable 소리
+    public AudioClip breakSound2;     
 
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -279,6 +284,8 @@ public class LaserBeam : MonoBehaviour
 
         if (tileHealth[cell] <= 0)
         {
+            //소리 재생
+            PlayRandomBreak();
             tilemap.SetTile(cell, null);
             tileHealth.Remove(cell);
         }
@@ -565,6 +572,24 @@ public class LaserBeam : MonoBehaviour
             }
             effectPool.Clear();
         }
+    }
+
+    //breakable 소리 재생 효과
+    void PlayRandomBreak()
+    {
+        if (breakSound1 == null && breakSound2 == null) return;
+
+        AudioClip clipToPlay; // 실제로 틀 소리를 담을 임시 변수
+
+        //50% 확률로 선택
+        if (breakSound1 != null && breakSound2 != null)
+            clipToPlay = (Random.value > 0.5f) ? breakSound1 : breakSound2;
+        else
+            // 하나만 있으면 있는 거 선택
+            clipToPlay = (breakSound1 != null) ? breakSound1 : breakSound2;
+
+        // 최종 선택된 소리 재생
+        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 2.0f);
     }
 }
 
