@@ -10,6 +10,9 @@ public class MenuManager : MonoBehaviour
     [Header("사운드 설정")]
     public AudioClip selectSound;       // 선택 소리
 
+
+    
+
     // Start 버튼 → 게임 시작
     public void OnClickStart()
     {
@@ -32,14 +35,14 @@ public class MenuManager : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX(selectSound, 0.2f);
         creditPanel.SetActive(true);
-        mainMenuPanel.SetActive(false);
+       mainMenuPanel.SetActive(false);
     }
 
     // Close 버튼 → 크레딧 패널 닫기
     public void OnClickCloseCredit()
     {
         SoundManager.Instance.PlaySFX(selectSound, 0.2f);
-        creditPanel.SetActive(false);
+         creditPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
 
@@ -48,6 +51,7 @@ public class MenuManager : MonoBehaviour
         if (creditPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             creditPanel.SetActive(false);
+            mainMenuPanel.SetActive(true);
         }
     }
 
