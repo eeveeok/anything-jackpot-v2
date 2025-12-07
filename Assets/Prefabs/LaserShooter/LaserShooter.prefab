@@ -164,6 +164,7 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 2dfed3c17205a084bbd165f6eed99fe4, type: 3}
   laserBeamPrefab: {fileID: 7113028204864663587, guid: dde3dd42a59334243a96d7280dd3b14d, type: 3}
   laserSpawnDistance: 0.1
+  isFirstScene: 0
   initialRecoilForce: 17
   continuousRecoilForce: 1000
   maxRecoilVelocity: 1000
