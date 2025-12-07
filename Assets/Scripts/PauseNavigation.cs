@@ -12,8 +12,14 @@ public class PauseNavigation : MonoBehaviour
 
     void Awake()
     {
+        // 씬에 EventSystem이 없으면 생성
         if (EventSystem.current == null)
-            new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+        {
+            GameObject esObj = new GameObject("EventSystem", typeof(EventSystem), typeof(StandaloneInputModule));
+
+            // [핵심] 생성된 EventSystem을 이 오브젝트(PauseUI)의 자식으로 설정
+            esObj.transform.SetParent(this.transform);
+        }
     }
 
 
