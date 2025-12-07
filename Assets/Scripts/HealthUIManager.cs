@@ -66,6 +66,10 @@ public class HealthUIManager : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentHealth = 5;
+        }
     }
 
     public void TakeDamage(int amount)
