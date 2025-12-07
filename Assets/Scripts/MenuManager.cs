@@ -42,4 +42,13 @@ public class MenuManager : MonoBehaviour
         creditPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
+
+    void Update()
+    {
+        if (creditPanel.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            creditPanel.SetActive(false);
+        }
+    }
+
 }
