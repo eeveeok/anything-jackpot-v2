@@ -1096,6 +1096,9 @@ public class Stage3Boss : MonoBehaviour
         rb.velocity = Vector2.zero;
         isInPattern = true;
 
+        // 배경음악 정지
+        SoundManager.Instance.StopBGM();
+
         // 사망 소리 재생
         SoundManager.Instance.PlaySFXAt(deathSound, transform.position, 1.5f);
 
@@ -1201,7 +1204,7 @@ public class Stage3Boss : MonoBehaviour
         AudioClip selectedClip = validClips[randomIndex];
 
         // 4. 보스 위치에서 3D 사운드로 재생 (볼륨 1.0)
-        SoundManager.Instance.PlaySFXAt(selectedClip, transform.position, 5.0f);
+        SoundManager.Instance.PlaySFXAt(selectedClip, transform.position, 20.0f);
     }
 
     // 걷기 소리 업데이트
