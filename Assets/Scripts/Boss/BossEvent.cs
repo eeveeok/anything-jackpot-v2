@@ -41,6 +41,12 @@ public class BossEvent : MonoBehaviour
     [Header("이벤트 설정")]
     public bool eventTriggered = false;
 
+    [Header("사운드 설정")]
+    public AudioClip bossBGM;
+    public AudioClip bossShockwaveSound;
+    public AudioClip bossAppearSound;
+
+
     private CinemachineConfiner2D confiner;
     private CinemachineBasicMultiChannelPerlin noise;
     private float originalOrthoSize;
@@ -80,12 +86,18 @@ public class BossEvent : MonoBehaviour
         {
             groundLayer = LayerMask.GetMask("Ground", "Default");
         }
+
+        // 배경음악 일시정지
+        SoundManager.Instance.PauseBGM();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !eventTriggered && !isEventActive)
         {
+            // 음악 재생
+            SoundManager.Instance.PlayBGM(bossBGM, 0.2f);
+
             StartCoroutine(BossEventSequence());
         }
     }
@@ -198,6 +210,9 @@ public class BossEvent : MonoBehaviour
             noise.m_FrequencyGain = shakeFrequency;
         }
 
+        //사운드 재생
+        SoundManager.Instance.PlaySFX(bossShockwaveSound, 0.1f);
+
         while (elapsed < zoomDuration)
         {
             elapsed += Time.unscaledDeltaTime;
@@ -254,6 +269,9 @@ public class BossEvent : MonoBehaviour
 
         // 잠시 대기
         yield return new WaitForSecondsRealtime(0.5f);
+
+        //사운드 재생
+        SoundManager.Instance.PlaySFX(bossAppearSound, 0.1f);
 
         // 보스 활성화
         bossObject.SetActive(true);

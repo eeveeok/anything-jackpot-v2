@@ -1545,6 +1545,9 @@ public class Stage1Boss : MonoBehaviour
         // 사망 소리 재생
         SoundManager.Instance.PlaySFXAt(deathSound, transform.position, 1.5f);
 
+        // BGM 정지
+        SoundManager.Instance.StopBGM();
+
         // 죽음 이펙트 생성
         CreateDeathEffect();
 
@@ -1624,7 +1627,7 @@ public class Stage1Boss : MonoBehaviour
             clipToPlay = (roarSound1 != null) ? roarSound1 : roarSound2;
 
         // 최종 선택된 소리 재생
-        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 1.2f);
+        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 2.0f);
     }
 
     // 랜덤 피격 소리

@@ -15,6 +15,9 @@ public class BounceTile : MonoBehaviour
     [SerializeField] private float upwardForce = 5f;  // 위쪽으로 추가되는 힘
     [SerializeField] private float cooldownTime = 0.5f; // 튕김 후 쿨다운
 
+    [Header("바운드 소리")]
+    public AudioClip bounceSound;
+
     private bool canBounce = true;
     private SpriteRenderer spriteRenderer;
     private Color originalColor;
@@ -39,6 +42,8 @@ public class BounceTile : MonoBehaviour
             Rigidbody2D playerRb = collision.gameObject.GetComponent<Rigidbody2D>();
             if (playerRb != null)
             {
+                // 바운스 사운드 재생
+                SoundManager.Instance.PlaySFX(bounceSound, 0.1f);
                 collision.gameObject.GetComponent<LaserShooter>().isBounced = true;
                 BouncePlayer(playerRb);
                 StartCoroutine(Cooldown());

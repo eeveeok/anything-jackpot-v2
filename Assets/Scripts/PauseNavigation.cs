@@ -7,6 +7,9 @@ public class PauseNavigation : MonoBehaviour
     public Button[] pauseButtons; // 계속하기, 나가기
     private int index = 0;
 
+    [Header("사운드 설정")]
+    public AudioClip selectSound;       // 선택 소리
+
     void Awake()
     {
         if (EventSystem.current == null)
@@ -24,6 +27,8 @@ public class PauseNavigation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
+            //소리 재생
+            SoundManager.Instance.PlaySFX(selectSound, 0.2f);
             index++;
             if (index >= pauseButtons.Length)
                 index = 0;
@@ -33,6 +38,8 @@ public class PauseNavigation : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
+            //소리 재생
+            SoundManager.Instance.PlaySFX(selectSound, 0.2f);
             index--;
             if (index < 0)
                 index = pauseButtons.Length - 1;

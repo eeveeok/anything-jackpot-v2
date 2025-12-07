@@ -23,6 +23,17 @@ public abstract class BasePlayerController : MonoBehaviour
     public float groundCheckRadius = 0.2f;
     public LayerMask whatIsGround;
 
+    [Header("사운드 설정")]
+    public AudioClip damageSound1;       // 피격 소리1
+    public AudioClip damageSound2;       // 피격 소리2
+    public AudioClip walkSound;        // 걷는 소리 (루프)
+    public AudioClip respawnSound;        // 스폰 소리
+    public AudioClip spikeSound;          // 스파이크 피격 소리
+    public AudioClip tractorBeamSound;    // 트랙터빔 피격 소리
+    public AudioClip jumpSound;          // 점프 소리
+
+    private AudioSource walkSource;
+
     // 컴포넌트 참조
     protected Rigidbody2D rb;
     protected Camera mainCamera;
@@ -59,6 +70,9 @@ public abstract class BasePlayerController : MonoBehaviour
     {
         InitializeComponents();
         InitializePosition();
+
+        //스폰 사운드 재생
+        SoundManager.Instance.PlaySFX(respawnSound, 0.3f);
     }
 
     protected virtual void Update()
@@ -69,6 +83,9 @@ public abstract class BasePlayerController : MonoBehaviour
         UpdateFacingDirection();
         UpdateAnimation();
         HandleSpecialInput();
+
+        // 걷는 소리 처리
+        HandleWalkSound();
     }
 
     protected virtual void FixedUpdate()
@@ -128,6 +145,8 @@ public abstract class BasePlayerController : MonoBehaviour
 
     protected virtual void Jump()
     {
+        // 점프 소리 재생
+        SoundManager.Instance.PlaySFX(jumpSound, 0.2f);
         rb.sharedMaterial = airMaterial;
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
@@ -221,6 +240,15 @@ public abstract class BasePlayerController : MonoBehaviour
         isDead = true;
         rb.simulated = false;
 
+        // 피격 소리 재생
+        PlayRandomDamgeSound();
+
+        if (walkSource != null)
+        {
+            walkSource.Stop();
+            walkSource = null;
+        }
+
         // 목숨 감소
         if (hpManager != null)
         {
@@ -255,6 +283,7 @@ public abstract class BasePlayerController : MonoBehaviour
 
     private IEnumerator RespawnDelay()
     {
+
         yield return new WaitForSeconds(respawnDelay);
         Respawn();
     }
@@ -268,6 +297,9 @@ public abstract class BasePlayerController : MonoBehaviour
         transform.position = respawnPos;
         rb.velocity = Vector2.zero;
         SetPlayerVisible(true);
+
+        // 사운드 재생
+        SoundManager.Instance.PlaySFX(respawnSound, 0.3f);
 
         isDead = false;
         isGrounded = false;
@@ -312,8 +344,16 @@ public abstract class BasePlayerController : MonoBehaviour
     {
         if (isDead || isInvincible) return;
 
-        if (collision.CompareTag("BossAttack") || collision.CompareTag("Spike"))
+        if (collision.CompareTag("BossAttack") || collision.CompareTag("Spike") || collision.CompareTag("TractorBeam"))
         {
+            if (collision.CompareTag("Spike") || collision.CompareTag("BossAttack"))
+            {
+                SoundManager.Instance.PlaySFX(spikeSound, 0.1f);
+            }
+            else if (collision.CompareTag("TractorBeam"))
+            {
+                SoundManager.Instance.PlaySFX(tractorBeamSound, 0.1f);
+            }
             PlayerDie();
         }
     }
@@ -338,6 +378,48 @@ public abstract class BasePlayerController : MonoBehaviour
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+    }
+
+    void PlayRandomDamgeSound()
+    {
+        if (damageSound1 == null && damageSound2 == null) return;
+
+        AudioClip clipToPlay; // 실제로 틀 소리를 담을 임시 변수
+
+        //50% 확률로 선택
+        if (damageSound1 != null && damageSound2 != null)
+            clipToPlay = (Random.value > 0.5f) ? damageSound1 : damageSound2;
+        else
+            // 하나만 있으면 있는 거 선택
+            clipToPlay = (damageSound1 != null) ? damageSound1 : damageSound2;
+
+        // 최종 선택된 소리 재생
+        SoundManager.Instance.PlaySFXAt(clipToPlay, transform.position, 4.0f);
+    }
+
+    protected void HandleWalkSound()
+    {
+        // 1. 소리가 재생될 조건: 땅에 있고(isGrounded) && 속도가 있으며 && 죽지 않음
+        bool isMoving = isGrounded && Mathf.Abs(rb.velocity.x) > 0.1f && !isDead;
+
+        if (isMoving)
+        {
+            // 걷고 있는데 소리가 안 나고 있다면 -> 켠다 (Loop)
+            if (walkSource == null)
+            {
+                // SoundManager를 통해 루프 재생하고, 해당 스피커를 변수에 저장
+                walkSource = SoundManager.Instance.PlaySFX(walkSound, 0.1f, true);
+            }
+        }
+        else
+        {
+            // 멈췄거나 공중인데 소리가 나고 있다면 -> 끈다
+            if (walkSource != null)
+            {
+                walkSource.Stop();
+                walkSource = null;
+            }
         }
     }
 }

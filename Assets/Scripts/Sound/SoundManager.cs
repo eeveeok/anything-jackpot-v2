@@ -165,4 +165,42 @@ public class SoundManager : MonoBehaviour
 
         return source; // ★ 스피커 리턴
     }
+
+    // =========================================================
+    // [BGM 제어 기능] - 외부에서 호출 가능
+    // =========================================================
+
+    // 1. BGM 일시정지 (Pause) - 다시 켜면 멈춘 곳부터 이어짐
+    public void PauseBGM()
+    {
+        // 페이드 효과가 진행 중이었다면 즉시 중단 (중요!)
+        if (bgmFadeCoroutine != null)
+            StopCoroutine(bgmFadeCoroutine);
+
+        bgmSource.Pause();
+    }
+
+    // 2. BGM 다시 재생 (Resume) - 멈춘 곳부터 이어짐
+    public void ResumeBGM()
+    {
+        if (bgmFadeCoroutine != null)
+            StopCoroutine(bgmFadeCoroutine);
+
+        bgmSource.UnPause();
+    }
+
+    // 3. BGM 완전 정지 (Stop) - 다시 켜면 처음부터 시작됨
+    public void StopBGM()
+    {
+        if (bgmFadeCoroutine != null)
+            StopCoroutine(bgmFadeCoroutine);
+
+        bgmSource.Stop();
+    }
+
+    // 4. BGM 음소거 토글 (Mute) - 소리만 끄고 재생은 계속됨
+    public void MuteBGM(bool isMuted)
+    {
+        bgmSource.mute = isMuted;
+    }
 }

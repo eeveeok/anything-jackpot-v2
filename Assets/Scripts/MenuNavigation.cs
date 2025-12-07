@@ -11,8 +11,14 @@ public class MenuNavigation : MonoBehaviour
 
     private int index = 0;
 
+    [Header("사운드 설정")]
+    public AudioClip selectSound;       // 선택 소리
+
     void Start()
     {
+        //소리 재생
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         // 처음 선택될 버튼
         EventSystem.current.SetSelectedGameObject(buttons[index].gameObject);
 
@@ -24,7 +30,7 @@ public class MenuNavigation : MonoBehaviour
     {
         // ↓ 아래 버튼 선택
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
+        { 
             index++;
             if (index >= buttons.Length)
                 index = 0; // 순환
@@ -45,6 +51,8 @@ public class MenuNavigation : MonoBehaviour
 
     void SelectCurrentButton()
     {
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         EventSystem.current.SetSelectedGameObject(buttons[index].gameObject);
         UpdateArrows();
     }

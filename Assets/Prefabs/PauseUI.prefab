@@ -290,6 +290,7 @@ MonoBehaviour:
   pauseButtons:
   - {fileID: 7041767016994415913}
   - {fileID: 7041767017352255817}
+  selectSound: {fileID: 8300000, guid: 277a60e1031d03d4eba60bd12f118861, type: 3}
 --- !u!1 &7041767017352255815
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +554,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 7041767017391609462}
   player: {fileID: 5567554072073979545, guid: 4895aaabb8eba31478564cfe65131bfe, type: 3}
+  isPaused: 0
+  pauseSound: {fileID: 8300000, guid: cd666c00cf3801e47860ce5b59d653c8, type: 3}
+  selectSound: {fileID: 8300000, guid: cfefe364c67c0794a82e4257431c0d10, type: 3}
 --- !u!1 &7041767017888478255
 GameObject:
   m_ObjectHideFlags: 0

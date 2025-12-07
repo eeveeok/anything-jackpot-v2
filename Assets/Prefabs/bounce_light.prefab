@@ -154,6 +154,7 @@ MonoBehaviour:
   bounceForce: 30
   upwardForce: 30
   cooldownTime: 0.5
+  bounceSound: {fileID: 8300000, guid: e1a5d775d613d35429d2b64a1a52bc1d, type: 3}
 --- !u!114 &282572956270578667
 MonoBehaviour:
   m_ObjectHideFlags: 0
