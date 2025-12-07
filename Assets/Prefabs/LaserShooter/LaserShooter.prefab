@@ -155,6 +155,12 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 832
+  damageSound1: {fileID: 8300000, guid: 99001317cd227e947844c87765a7e6b0, type: 3}
+  damageSound2: {fileID: 8300000, guid: 3131754800394094cabc4df5d0f2e1ee, type: 3}
+  walkSound: {fileID: 8300000, guid: 3c95531005a0a3f408edaf6d3972646f, type: 3}
+  respawnSound: {fileID: 8300000, guid: 930cd30d057543a4ab7e35c55f711959, type: 3}
+  spikeSound: {fileID: 8300000, guid: 13a25b56a9bc3ff4596aacec14427ad9, type: 3}
+  tractorBeamSound: {fileID: 8300000, guid: 5fd9887cd614155479dbb5f007d61319, type: 3}
   laserBeamPrefab: {fileID: 7113028204864663587, guid: dde3dd42a59334243a96d7280dd3b14d, type: 3}
   laserSpawnDistance: 0.1
   initialRecoilForce: 17

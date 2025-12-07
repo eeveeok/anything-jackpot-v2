@@ -13,6 +13,9 @@ public class CannonShooter : BasePlayerController
     public float effectSpawnDistance = 0.5f;
     public float effectDuration = 0.5f;
 
+    [Header("사운드 설정")]
+    public AudioClip cannonSound;
+
     // 발사 관련
     private bool canShoot = true;
     private float lastShootTime = 0f;
@@ -33,6 +36,8 @@ public class CannonShooter : BasePlayerController
 
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
+            //사운드 재생
+            SoundManager.Instance.PlaySFX(cannonSound, 0.05f);
             ShootCannon();
         }
     }
