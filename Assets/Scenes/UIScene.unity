@@ -616,5 +616,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8635916513308456923, guid: d6be67d58375bf6448684d4c0ff1874d, type: 3}
+      propertyPath: npc7Dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: da611cc6e6281ca499504115f45006ba, type: 2}
+    - target: {fileID: 8635916513308456923, guid: d6be67d58375bf6448684d4c0ff1874d, type: 3}
+      propertyPath: npc8Dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 55f2fe600e1f21548bbdf3dac8db2ee1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6be67d58375bf6448684d4c0ff1874d, type: 3}

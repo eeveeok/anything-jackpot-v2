@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
     public DialogueData npc5Dialogue;
     public DialogueData npc6Dialogue;
     public DialogueData npc7Dialogue;
+    public DialogueData npc8Dialogue;
 
     [Header("사운드 설정")]
     public AudioClip chatSound1;       // 채팅 소리1
@@ -47,31 +48,40 @@ public class DialogueManager : MonoBehaviour
             StartDialogue(npc1Dialogue);
         }
 
-        if (scene == "Level 1-5")
+        if (scene == "Level 1-1")
         {
             StartDialogue(npc2Dialogue);
         }
 
-        if (scene == "Level 2-1")
+        if (scene == "Level 1-5")
         {
             StartDialogue(npc3Dialogue);
         }
 
-        if (scene == "Level 2-20")
+        if (scene == "Level 2-1")
         {
             StartDialogue(npc4Dialogue);
         }
 
-        if (scene == "Level 3-1")
+        if (scene == "Level 2-20")
         {
             StartDialogue(npc5Dialogue);
         }
 
-        if (scene == "Level 3-10")
+        if (scene == "Level 3-1")
         {
             StartDialogue(npc6Dialogue);
         }
 
+        if (scene == "Level 3-10")
+        {
+            StartDialogue(npc7Dialogue);
+        }
+
+        //if (scene == "EndingScene")
+        //{
+        //    StartDialogue(npc8Dialogue);
+        //}
     }
 
     void Update()
