@@ -1223,7 +1223,7 @@ MonoBehaviour:
   buttons:
   - {fileID: 1034647690}
   - {fileID: 1700815193}
-  - {fileID: 0}
+  - {fileID: 604923719}
   arrowLeft: {fileID: 1732395269}
   arrowRight: {fileID: 1621754600}
   selectSound: {fileID: 8300000, guid: 277a60e1031d03d4eba60bd12f118861, type: 3}
