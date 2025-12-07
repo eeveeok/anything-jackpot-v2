@@ -10,7 +10,6 @@ public class CreditRoll : MonoBehaviour
 
     void OnEnable()
     {
-         
         startPos = new Vector2(creditsText.anchoredPosition.x, -400f);
         creditsText.anchoredPosition = startPos;
     }
