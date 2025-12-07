@@ -6,6 +6,7 @@ public class LaserShooter : BasePlayerController
     [Header("레이저 설정")]
     public GameObject laserBeamPrefab;
     public float laserSpawnDistance = 0.1f;
+    public bool isFirstScene = false;
 
     [Header("반동 세부 설정")]
     public float initialRecoilForce = 17f;
@@ -58,7 +59,7 @@ public class LaserShooter : BasePlayerController
     {
         if (IsGamePaused()) return;
 
-        if (Input.GetMouseButtonDown(0) && !isLaserActive)
+        if (Input.GetMouseButtonDown(0) && !isLaserActive && !isFirstScene)
         {
             StartLaser();
             if (animator != null) animator.SetBool(FIRE_PARAM, true);
