@@ -14,6 +14,9 @@ public class GameOverNavigation : MonoBehaviour
     private Vector3 selectedScale = new Vector3(1.15f, 1.15f, 1f);
     private Vector3 normalScale = new Vector3(1f, 1f, 1f);
 
+    [Header("사운드 설정")]
+    public AudioClip selectSound;       // 선택 소리
+
     void OnEnable()
     {
         index = 0;
@@ -46,6 +49,9 @@ public class GameOverNavigation : MonoBehaviour
 
     void HighlightButtons()
     {
+        // 사운드 재생
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         yesButton.transform.localScale = (index == 0 ? selectedScale : normalScale);
         noButton.transform.localScale = (index == 1 ? selectedScale : normalScale);
 

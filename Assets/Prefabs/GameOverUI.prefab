@@ -237,6 +237,7 @@ MonoBehaviour:
   yesButton: {fileID: 8140560510109492612}
   noButton: {fileID: 8140560509772286382}
   arrow: {fileID: 8140560509163820210}
+  selectSound: {fileID: 8300000, guid: 277a60e1031d03d4eba60bd12f118861, type: 3}
 --- !u!1 &8140560509772286383
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,3 +957,5 @@ MonoBehaviour:
   yesButtonObj: {fileID: 8140560510109492615}
   noButtonObj: {fileID: 8140560509772286383}
   navigationObject: {fileID: 8140560509163820211}
+  selectSound: {fileID: 8300000, guid: cfefe364c67c0794a82e4257431c0d10, type: 3}
+  gameoverBGM: {fileID: 8300000, guid: 97ef374bc8e2f024d867fd42fe515f09, type: 3}

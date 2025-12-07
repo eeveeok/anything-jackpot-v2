@@ -82,7 +82,7 @@ public class SoundManager : MonoBehaviour
     {
         float halfDuration = bgmFadeDuration * 0.5f;
 
-        // 1. 페이드 아웃 (현재 재생 중인 곡이 있다면)
+        // 1. 페이드 아웃
         if (bgmSource.isPlaying)
         {
             float startVolume = bgmSource.volume;
@@ -90,8 +90,8 @@ public class SoundManager : MonoBehaviour
 
             while (timer < halfDuration)
             {
-                timer += Time.deltaTime;
-                // 현재 볼륨에서 0까지 서서히 줄임
+                timer += Time.unscaledDeltaTime;
+
                 bgmSource.volume = Mathf.Lerp(startVolume, 0f, timer / halfDuration);
                 yield return null;
             }
@@ -107,13 +107,13 @@ public class SoundManager : MonoBehaviour
         float fadeInTimer = 0f;
         while (fadeInTimer < halfDuration)
         {
-            fadeInTimer += Time.deltaTime;
-            // 0에서 목표 볼륨까지 서서히 키움
+            fadeInTimer += Time.unscaledDeltaTime;
+
             bgmSource.volume = Mathf.Lerp(0f, targetVolume, fadeInTimer / halfDuration);
             yield return null;
         }
 
-        bgmSource.volume = targetVolume; // 최종 볼륨 확정
+        bgmSource.volume = targetVolume;
     }
 
     // =========================================================

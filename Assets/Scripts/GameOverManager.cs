@@ -16,6 +16,10 @@ public class GameOverManager : MonoBehaviour
     public GameObject noButtonObj;
     public GameObject navigationObject;
 
+    [Header("사운드 설정")]
+    public AudioClip selectSound;       // 선택 소리
+    public AudioClip gameoverBGM;      // 게임오버 BGM
+
     void Start()
     {
         gameOverPanel.SetActive(false);
@@ -37,6 +41,8 @@ public class GameOverManager : MonoBehaviour
 
     public void TriggerGameOver()
     {
+        // 게임오버 BGM 재생
+        SoundManager.Instance.PlayBGM(gameoverBGM, 0.2f);
         isGameOver = true;
         Time.timeScale = 0f;
         StartCoroutine(GameOverSequence());
@@ -44,6 +50,7 @@ public class GameOverManager : MonoBehaviour
 
     IEnumerator GameOverSequence()
     {
+
         gameOverPanel.SetActive(true);
 
     
@@ -60,6 +67,9 @@ public class GameOverManager : MonoBehaviour
 
     public void OnClickYes()
     {
+        // 선택 소리 재생
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         Time.timeScale = 1f;
 
         LaserShooter player = FindObjectOfType<LaserShooter>();
@@ -82,6 +92,9 @@ public class GameOverManager : MonoBehaviour
 
     public void OnClickNo()
     {
+        // 선택 소리 재생
+        SoundManager.Instance.PlaySFX(selectSound, 0.2f);
+
         Time.timeScale = 1f;
 
         LaserShooter player = FindObjectOfType<LaserShooter>();
