@@ -78,10 +78,10 @@ public class DialogueManager : MonoBehaviour
             StartDialogue(npc7Dialogue);
         }
 
-        //if (scene == "EndingScene")
-        //{
-        //    StartDialogue(npc8Dialogue);
-        //}
+        if (scene == "EndingScene")
+        {
+            StartDialogue(npc8Dialogue);
+        }
     }
 
     void Update()

@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: Ending
   m_EditorClassIdentifier: 
   lines:
-  - "\uB098\uB294 \uC544\uBB34\uAC83\uB3C4 \uBAA8\uB978\uB2E4(I don\u2019t know anything)\r\n"
-  - "\uB098\uB294 \uBAA8\uB4E0 \uAC83\uC744 \uC548\uB2E4(I know everything)"
+  - speaker: player
+    text: "\uB098\uB294 \uC544\uBB34\uAC83\uB3C4 \uBAA8\uB978\uB2E4(I don\u2019t
+      know anything)"
+  - speaker: player
+    text: "\uD558\uC9C0\uB9CC \uC9C0\uAE08\uC740(but, now)"
+  - speaker: player
+    text: "\uB098\uB294 \uBAA8\uB4E0 \uAC83\uC744 \uC548\uB2E4(I know everything)"
